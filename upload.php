@@ -37,7 +37,7 @@ if(isset($_POST["sqlcheck"])) {
 	
 	$servername = "localhost";
 	$username = "root";
-	$password = "access";
+	$password = '$$almoe$$';
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password);
@@ -181,7 +181,7 @@ function previewcsv(){
 	else{
 	$servername = "localhost";
 	$username = "root";
-	$password = "access";
+	$password = '$$almoe$$';
 	$mydatabase = "chromispos";
 
 	// Create connection
