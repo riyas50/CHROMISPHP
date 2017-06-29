@@ -110,6 +110,7 @@
     if (isset($_POST['Save']))
     {
         echo '<div class="label label-warning">' . 'Save pressed!' . '</div>';
+        //--REPLACE INTO categories (ID,NAME) VALUES (CONVERT(UUID(),CHAR),'TEST03');
     }
 ?>
 
