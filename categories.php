@@ -40,11 +40,12 @@
  <div class="col-lg-4 text-right">
  <div class="input-group">
     <div class="input-group-addon">Category</div>
-    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Category">
+    <input type="text" class="form-control" name="category" id="inlineFormInputGroup" placeholder="Category" required>
     </div>
     <br />  
      <button type="submit" class="btn btn-success" id="btnSave" name="Save">Save</button>
-     <button type="submit" class="btn btn-danger" id="btnCancel" name="Cancel">Cancel</button>
+     <button type="submit" class="btn btn-warning" id="btnRemove" name="Remove">Remove</button>
+     <button type="submit" class="btn btn-info" id="btnRefresh" name="Refresh" formnovalidate>Refresh</button>
  </div>
  <div class="col-lg-4"></div>
  </div>
@@ -56,26 +57,21 @@
 <div class="col-lg-4">
 
 <div class="panel panel-default">
-  
-  <!-- Default panel contents -->
  
-  <!-- <div class="panel-heading">Existing Categories</div> -->
-
- <!-- Default panel contents
-  <div class="panel-body">
-    This is panel body
-  </div>
- -->
-
-
   <!-- Table -->
   <table class="table table-striped">
-  <thread>
+  <thead>
+  
+  
     <?php
-
     include('dbconnect.php');
+    refreshRecords();
+function refreshRecords() {
     
-        echo '<td width=75%">Category Description</td>';
+        echo '<tr>';
+        echo '<th class="label visible-lg-inline-block label-info text-center" width="100%">Category Description</th>';
+        echo '</tr>';
+        echo '</thead>';
 
         $conn = dbConn();
 
@@ -93,12 +89,11 @@
         }
 
         mysqli_close($conn);
-
-    
-
+        $conn=null;
+        $sql="";
+}
     ?>
-
-    </thread>
+    
   </table>
   </div>    
 </div>
@@ -111,13 +106,59 @@
     {
         echo '<div class="label label-warning">' . 'Save pressed!' . '</div>';
         //--REPLACE INTO categories (ID,NAME) VALUES (CONVERT(UUID(),CHAR),'TEST03');
+         $conn = dbConn();
+
+         $category = $_POST['category'];
+
+        $sql = "REPLACE INTO categories (ID,NAME) VALUES (CONVERT(UUID(),CHAR),'". $category ."')";
+        $result = mysqli_query($conn, $sql);
+
+        if ($result) {
+            echo '<div class="label label-success">' . 'Record updated!' . '</div>';
+            echo "<meta http-equiv='refresh' content='0'>";
+        }
+        else
+        {
+            echo '<div class="label label-danger">' . 'failed to save!' . '</div>';
+        }
+        mysqli_close($conn);
+        $conn=null;
+        $sql="";
     }
+
+if (isset($_POST['Remove']))
+    {
+     echo '<div class="label label-warning">' . 'Remove pressed!' . '</div>';
+
+     $conn =dbConn();
+     $remCategory = $_POST['category'];
+
+      $sql = "DELETE FROM categories WHERE NAME = '". $remCategory ."'";
+      echo '<div class="label label-info">' . 'Query:=' . $sql . '</div>'; 
+        $result = mysqli_query($conn, $sql);
+
+         if ($result) {
+            echo '<div class="label label-danger">' . 'Record Removed!' . $result . '</div>';
+            echo "<meta http-equiv='refresh' content='0'>";
+        }
+        else
+        {
+            echo '<div class="label label-danger">' . 'failed to Remove!' . '</div>';
+            echo $result;
+        }
+        mysqli_close($conn);
+        $conn=null;
+        $sql="";
+    }
+
 ?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/validator.js"></script>
+
 <!--
 -->  </body>
 </html>
