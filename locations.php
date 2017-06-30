@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Chromis PHP - Categories</title>
+    <title>Chromis PHP - Locations</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -28,22 +28,22 @@
 <header class="site__header island">
   <div class="wrap">
    <span id="animationSandbox" style="display: block;"  class="tada animated">
-   <h1 class="site__title mega text-center">Category Master</h1>
+   <h1 class="site__title mega text-center">Location Master</h1>
    </span>
   </div>
   </header>
 
-<form action="categories.php" method="post" enctype="multipart/form-data">
+<form action="locations.php" method="post" enctype="multipart/form-data">
  <div class="row">
  <div class="form-group">
  <div class="col-lg-4"></div>
  <div class="col-lg-4 text-right">
-          <a class="glyphicon glyphicon-home" style="font-size:30px;color:orange" href="/chromisphp/index.php"></a> 
+     <a class="glyphicon glyphicon-home" style="font-size:30px;color:orange" href="/chromisphp/index.php"></a> 
  <div class="input-group">
-    <div class="input-group-addon">Category</div>
-    <input type="text" class="form-control" name="category" id="inlineFormInputGroup" placeholder="Category" required>
+    <div class="input-group-addon">Locations</div>
+    <input type="text" class="form-control" name="Location" id="inlineFormInputGroup" placeholder="Location" required>
     </div>
-    <br />  
+    <br />
      <button type="submit" class="btn btn-success" id="btnSave" name="Save">Save</button>
      <button type="submit" class="btn btn-warning" id="btnRemove" name="Remove">Remove</button>
      <button type="submit" class="btn btn-info" id="btnRefresh" name="Refresh" formnovalidate>Refresh</button>
@@ -70,13 +70,13 @@
 function refreshRecords() {
     
         echo '<tr>';
-        echo '<th class="label visible-lg-inline-block label-info text-center" width="100%">Category Description</th>';
+        echo '<th class="label visible-lg-inline-block label-info text-center" width="100%">Location Description</th>';
         echo '</tr>';
         echo '</thead>';
 
         $conn = dbConn();
 
-        $sql = "SELECT ID,NAME FROM categories";
+        $sql = "SELECT NAME FROM locations";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
@@ -110,9 +110,9 @@ function refreshRecords() {
         //--REPLACE INTO categories (ID,NAME) VALUES (CONVERT(UUID(),CHAR),'TEST03');
          $conn = dbConn();
 
-         $category = $_POST['category'];
+         $location = $_POST['Location'];
 
-        $sql = "REPLACE INTO categories (ID,NAME) VALUES (CONVERT(UUID(),CHAR),'". $category ."')";
+        $sql = "REPLACE INTO locations (SITEGUID,NAME) VALUES (CONVERT(UUID(),CHAR),'". $location ."')";
         $result = mysqli_query($conn, $sql);
 
         if ($result) {
@@ -133,9 +133,9 @@ if (isset($_POST['Remove']))
      echo '<div class="label label-warning">' . 'Remove pressed!' . '</div>';
 
      $conn =dbConn();
-     $remCategory = $_POST['category'];
+     $remLocation = $_POST['Location'];
 
-      $sql = "DELETE FROM categories WHERE NAME = '". $remCategory ."'";
+      $sql = "DELETE FROM locations WHERE NAME = '". $remLocation ."'";
       echo '<div class="label label-info">' . 'Query:=' . $sql . '</div>'; 
         $result = mysqli_query($conn, $sql);
 

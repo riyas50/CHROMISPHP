@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>CHROMIS PHP</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/sticky-footer.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     
 
@@ -26,11 +27,27 @@
     <header class="site__header island">
   <div class="wrap">
    <span id="animationSandbox" style="display: block;"  class="tada animated">
-   <h1 class="site__title mega text-center">Animate.css</h1>
-   </span>
+   <h2 class="site__title mega text-center">CHROMISPHP MENU</h2>
+     </span>
   </div>
   </header>
- 
+<br />
+<br />
+  <div class="container">
+    <div class="well">
+  <a class="btn btn-success" href="/chromisphp/Locations.php">Locations</a>
+  <a class="btn btn-danger" href="/chromisphp/Categories.php">Categories</a>
+  <a class="btn btn-info" href="#">Products Upload</a>
+  <a class="btn btn-warning" href="/chromisphp/csvupload.php">Quantity from csv</a>
+  <a class="btn btn-danger" href="#">Product Search</a>
+  </div>
+</div>
+
+ <footer class="footer">
+      <div class="container">
+        <p class="text-muted text-center text-success">Chromis POS	0.58.5.7a | Server type: MySQL | Server version: 5.6.26 - MySQL Community Server (GPL)</p>
+      </div>
+ </footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
