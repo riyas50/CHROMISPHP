@@ -38,7 +38,7 @@
  <div class="form-group">
  <div class="col-lg-4"></div>
  <div class="col-lg-4 text-right">
-     <a class="glyphicon glyphicon-home" style="font-size:30px;color:orange" href="/chromisphp/index.php"></a> 
+     <a class="glyphicon glyphicon-home" style="font-size:30px;color:orange" href="/chromisphp/"></a> 
  <div class="input-group">
     <div class="input-group-addon">Locations</div>
     <input type="text" class="form-control" name="Location" id="inlineFormInputGroup" placeholder="Location" required>

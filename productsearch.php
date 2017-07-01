@@ -28,25 +28,27 @@
 <header class="site__header island">
   <div class="wrap">
    <span id="animationSandbox" style="display: block;"  class="tada animated">
-   <h1 class="site__title mega text-center">Category Master</h1>
+   <h1 class="site__title mega text-center">Product Search</h1>
    </span>
   </div>
   </header>
 
-<form action="categories.php" method="post" enctype="multipart/form-data">
+<form action="productsearch.php" method="post" enctype="multipart/form-data">
  <div class="row">
  <div class="form-group">
  <div class="col-lg-4"></div>
  <div class="col-lg-4 text-right">
           <a class="glyphicon glyphicon-home" style="font-size:30px;color:orange" href="/chromisphp/"></a> 
  <div class="input-group">
-    <div class="input-group-addon">Category</div>
-    <input type="text" class="form-control" name="category" id="inlineFormInputGroup" placeholder="Category" required>
+    <div class="input-group-addon">SEARCH</div>
+    <input type="text" class="form-control" name="barcode" id="inlineFormInputGroup" placeholder="BARCODE">
+    <input type="text" class="form-control" name="item" id="inlineFormInputGroup" placeholder="ITEM">
+    <input type="text" class="form-control" name="category" id="inlineFormInputGroup" placeholder="CATEGORY">
     </div>
     <br />  
-     <button type="submit" class="btn btn-success" id="btnSave" name="Save">Save</button>
-     <button type="submit" class="btn btn-warning" id="btnRemove" name="Remove">Remove</button>
-     <button type="submit" class="btn btn-info" id="btnRefresh" name="Refresh" formnovalidate>Refresh</button>
+     <button type="submit" class="btn btn-success" id="btnSearch" name="Search">Search</button>
+     <button type="submit" class="btn btn-warning" id="btnClear" name="Clear">Clear</button>
+     <button type="submit" class="btn btn-info" id="btnReload" name="Reload">Reload</button>
  </div>
  <div class="col-lg-4"></div>
  </div>
@@ -55,49 +57,25 @@
 <br />
 <div class="row">
 <div class="col-lg-4"></div>
-<div class="col-lg-4">
+<div class="col-lg-12">
 
-<div class="panel panel-default">
+<!--<div class="panel panel-default">-->
  
   <!-- Table -->
-  <table class="table table-striped">
-  <thead>
+  <!--<table class="table table-striped">-->
+  <!--<thead>-->
   
   
-    <?php
-    include('dbconnect.php');
-    refreshRecords();
-function refreshRecords() {
+<?php
+    //include('dbconnect.php');
+    include('productquery.php');
+    if (empty($_POST))
+    {
+        refreshRecords();
+    }
+?>
     
-        echo '<tr>';
-        echo '<th class="label visible-lg-inline-block label-info text-center" width="100%">Category Description</th>';
-        echo '</tr>';
-        echo '</thead>';
-
-        $conn = dbConn();
-
-        $sql = "SELECT ID,NAME FROM categories";
-        $result = mysqli_query($conn, $sql);
-
-        if (mysqli_num_rows($result) > 0) {
-            // output data of each row
-            while($row = mysqli_fetch_assoc($result)) {
-                //echo "<tr><td>". $row["ID"] ."</td>" . "<td>". $row["NAME"] ."</td></tr>";
-                echo "<tr><td>". $row["NAME"] ."</td></tr>";
-            }
-        } else {
-            //echo "0 results";
-            echo "<tr><td>". "No records found!" ."</td></tr>";
-        }
-
-        mysqli_close($conn);
-        $conn=null;
-        $sql="";
-}
-    ?>
-    
-  </table>
-  </div>    
+ 
 </div>
 <div class="col-lg-4"></div>
 </div>
@@ -128,30 +106,18 @@ function refreshRecords() {
         $sql="";
     }
 
-if (isset($_POST['Remove']))
+if (isset($_POST['Reload']))
     {
-     echo '<div class="label label-warning">' . 'Remove pressed!' . '</div>';
-
-     $conn =dbConn();
-     $remCategory = $_POST['category'];
-
-      $sql = "DELETE FROM categories WHERE NAME = '". $remCategory ."'";
-      echo '<div class="label label-info">' . 'Query:=' . $sql . '</div>'; 
-        $result = mysqli_query($conn, $sql);
-
-         if ($result) {
-            echo '<div class="label label-danger">' . 'Record Removed!' . $result . '</div>';
-            echo "<meta http-equiv='refresh' content='0'>";
-        }
-        else
-        {
-            echo '<div class="label label-danger">' . 'failed to Remove!' . '</div>';
-            echo $result;
-        }
-        mysqli_close($conn);
-        $conn=null;
-        $sql="";
+        refreshRecords();
     }
+
+if (isset($_POST['Search']))
+    {
+        filterRecords($_POST['barcode'],$_POST['item'],$_POST['category']);
+        //$_POST['barcode'] = $_POST['barcode'];
+    }
+
+
 
 ?>
 
