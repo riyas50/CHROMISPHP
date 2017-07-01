@@ -1,36 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Chromis PHP - Categories</title>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- Animate.css -->
-    <link href="css/animate.css" rel="stylesheet">
-    
+    <?php
+        include('general.php');
+        putLinks();
+    ?>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body>
-
-  
-  
-<header class="site__header island">
-  <div class="wrap">
-   <span id="animationSandbox" style="display: block;"  class="tada animated">
-   <h1 class="site__title mega text-center">Product Search</h1>
-   </span>
-  </div>
+    <header class="site__header island">
+    <div class="wrap">
+    <span id="animationSandbox" style="display: block;"  class="tada animated">
+    <h1 class="site__title mega text-center">Product Search</h1>
+    </span>
+    </div>
   </header>
 
 <form action="productsearch.php" method="post" enctype="multipart/form-data">
@@ -69,10 +53,12 @@
 <?php
     //include('dbconnect.php');
     include('productquery.php');
-    if (empty($_POST))
-    {
-        refreshRecords();
-    }
+    if (isset($_POST['']))
+        {
+            //echo 'empty post';
+            refreshRecords();
+            //putEmptyRow();
+        }
 ?>
     
  
@@ -117,16 +103,16 @@ if (isset($_POST['Search']))
         //$_POST['barcode'] = $_POST['barcode'];
     }
 
-
-
 ?>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/validator.js"></script>
+<?php
+    //include('general.php');
+    putScripts();
+    stickfooter();
+?>
 
 <!--
--->  </body>
+-->
+ 
+</body>
 </html>

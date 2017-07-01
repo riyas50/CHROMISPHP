@@ -116,8 +116,32 @@
                 {
                     echo "<tr><td class='bg-info text-center' colspan='8'>No records found!</td></tr>";
                 }
-                echo '</tbody';
+                    echo '</table>';
+                    echo '</div>';   
                 $stmt->close();
             }
-    }    
+    }
+    
+    function putEmptyRow()
+    {
+        echo '<div class="panel panel-default">';  
+        echo '<table class="table table-striped">';
+        echo '<thead>';
+        echo '<tr>';
+        echo '<th>BARCODE</th>';
+        echo '<th>REFERENCE</th>';
+        echo '<th>ITEM</th>';
+        echo '<th>PRICE</th>';
+        echo '<th>COST</th>';
+        echo '<th>CATEGORY</th>';
+        echo '<th>STOCK</th>';
+        echo '<th>TAX TYPE</th>';
+        echo '</tr>';
+        echo '</thead>';
+        echo '<tbody>';
+        echo "<tr><td class='bg-info text-center' colspan='8'></td></tr>";
+        echo '</tbody';
+        echo '</table>';
+        echo '</div>';  
+    }
 ?>
