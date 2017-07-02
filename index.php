@@ -26,7 +26,7 @@
   <a class="btn btn-danger" href="/chromisphp/Categories.php">Categories</a>
   <a class="btn btn-info" href="/chromisphp/productsearch.php">Products Search</a>
   <a class="btn btn-warning" href="/chromisphp/csvupload.php">Quantity from csv</a>
-  <a class="btn btn-danger" href="#">Product upload</a>
+  <a class="btn btn-danger" href="/chromisphp/productupload.php">Product upload</a>
   </div>
 </div>
 
