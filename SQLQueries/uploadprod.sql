@@ -24,3 +24,5 @@ REPLACE into stockcurrent (LOCATION,PRODUCT,UNITS)
 END$$
 DELIMITER ;
 */
+
+ 

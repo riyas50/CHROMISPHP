@@ -1,7 +1,11 @@
 -- mySQL or MariaDB Queries for Chromis POS analysis
-select * from products;
+select * from products 
+where REFERENCE='1008'
+order by REFERENCE;
 select * from products_com;
-  select * from stockcurrent order by UNITS;
+  select * from stockcurrent 
+  where PRODUCT='729307a1-301a-4e46-9618-02486be3b216'
+  order by UNITS;
     select * from stockdiary;
       select * from stockchanges;
         select * from stocklevel;
@@ -14,11 +18,25 @@ select * from taxlines;
 select * from taxcustcategories;
 
 /*
+select count(units) from stockcurrent   
+*/
+
+/*
+delete from products
 delete from categories where name != 'Stationery';
 delete from stockcurrent where units>0;
-delete from products where code='10007';
+*/
+/*
+delete from products
+ where reference='1008';
+delete from categories where name != 'Stationery';
+delete from stockcurrent where units>0;
+*/
 
- delete from stockcurrent;
+
+/*
+delete from stockdiary;
+delete from stockcurrent;
 delete from products;
-  delete from categories;
-  */
+delete from categories;
+*/
