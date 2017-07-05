@@ -87,9 +87,9 @@
                  INNER JOIN products     ON stockcurrent.PRODUCT = products.ID  
                  INNER JOIN categories     ON products.CATEGORY = categories.ID   
                  INNER JOIN taxes     ON products.TAXCAT = taxes.ID   
-                 WHERE products.code like '" . $barcode . "%'" .   
-                 "AND products.NAME like '" . $item . "%'" .   
-                 "AND categories.NAME like '" . $category . "%'";
+                 WHERE products.code like '%" . $barcode . "%'" .   
+                 "AND products.NAME like '%" . $item . "%'" .   
+                 "AND categories.NAME like '%" . $category . "%'";
 
 
                 if ($stmt = $conn->prepare($query)) {
