@@ -15,6 +15,8 @@ function putLinks()
     <!-- Animate.css -->
     <link href='css/animate.css' rel='stylesheet'>
     
+    <!-- Bootstrap datetimepicker -->
+    <link href='css/bootstrap-datetimepicker.min.css' rel='stylesheet'>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,6 +40,17 @@ function putScripts()
         <script src='js/jquery.min.js'></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src='js/bootstrap.min.js'></script>
-        <script src='js/validator.js'></script>";
+        <script src='js/validator.js'></script>
+        <script src='js/bootstrap-datetimepicker.min.js'></script>";
     }
+
+function putDatePickerScript()
+{
+    echo '<script type="text/javascript">
+    $(".form_datetime").datetimepicker({
+        format: "dd mm yyyy - hh:ii:ss",
+        autoclose: true
+    });
+    </script> ';
+}
 ?>
