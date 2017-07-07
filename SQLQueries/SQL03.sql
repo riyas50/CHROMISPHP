@@ -6,7 +6,7 @@ select * from products_com;
   select * from stockcurrent 
 --   where PRODUCT='729307a1-301a-4e46-9618-02486be3b216'
   order by UNITS;
-    select * from stockdiary;
+    select * from stockdiary ORDER BY DATENEW;
       select * from stockchanges;
         select * from stocklevel;
           select * from locations;

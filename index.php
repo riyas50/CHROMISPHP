@@ -5,7 +5,7 @@
         include('general.php');
         putLinks();
     ?>
-    <title>Home</title>
+    <title>CHROMIS BACKOFFICE</title>
   </head>
   <body>
     <header class="site__header island">
