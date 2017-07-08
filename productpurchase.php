@@ -3,7 +3,8 @@
   <head>
     <?php
         include('general.php');
-        include('dbconnect.php');
+        //include('dbconnect.php');
+        include('prodpurchcode.php');
         putLinks();
     ?>
    <title>Purchase - Chromis BackOffice</title>
@@ -74,58 +75,48 @@
  </div>
  </form>
 <br />
-<div class="row">
-<div class="col-lg-4"></div>
-<div class="col-lg-4">
-<div class="col-lg-4"></div>
-</div>
-</div>
 
-<?php 
-    if (isset($_POST['Save']))
-    {
-         $conn = dbConn();
-
-         //$location = $_POST['Location'];
-
+   <!--  <div class="row">
+       <div class="col-lg-1"></div> 
         
+        <div class="col-lg-12">-->
 
-        $sql = "CALL PRODPURCHASE (now(),1,0,'" . $_POST['barcode'] . "'," . $_POST['quantity'] . 
-        "," . $_POST['buyPrice'] . ",'Navas')";
-         
-        //echo $sql;
-        
-        $result = mysqli_query($conn, $sql);
+        <?php 
 
-        if ($result) {
-            echo '<div class="label label-success">' . 'Record updated!' . '</div>';
-            //echo "<meta http-equiv='refresh' content='0'>";
+        session_start();
+        if( strcasecmp($_SERVER['REQUEST_METHOD'],"POST") === 0) {
+            $_SESSION['postdata'] = $_POST;
+            header("Location: ".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']);
+            exit;
         }
-        else
+        if( isset($_SESSION['postdata'])) {
+            $_POST = $_SESSION['postdata'];
+            unset($_SESSION['postdata']);
+        }
+
+        if (isset($_POST['Save']))
         {
-            echo '<div class="label label-danger">' . 'failed to save!' . '</div>';
+            newPurchase($_POST['barcode'],$_POST['quantity'],$_POST['buyPrice']);
+            // echo "<meta http-equiv='refresh' content='0'>";
         }
-        mysqli_close($conn);
-        $conn=null;
-        $sql="";
-    }
 
-if (isset($_POST['Remove']))
-    {
-        //php code here
-    }
+        if (isset($_POST['Remove']))
+        {
+            //php code here
+        }
 
-?>
+        ?>
 
-	<?php
-    //include('general.php'); 
-    putScripts();
-    putDatePickerScript();
-    stickfooter();
-?>
+   <!--     </div>
+        <div class="col-lg-1"></div> 
+    </div>-->
 
+    <?php
+        //include('general.php'); 
+        putScripts();
+        putDatePickerScript();
+        stickfooter();
+    ?>
 
-
-<!--
--->  </body>
+</body>
 </html>
