@@ -57,8 +57,8 @@
                 <div class="col-lg-3"></div>
                     <div class="col-lg-6 text-right">
                         <div> <!-- just for the frame -->
-                        <button type="submit" class="btn btn-success" id="btnUpload" name="upload" >Upload</button>
-                        <span><button type="submit" class="btn btn-info" id="btnPreview" name="preview" >Preview</button></span>
+                        <button type="submit" class="btn btn-success" id="btnUpload" name="upload" onclick="return confirm('Do you want to upload?')">Upload</button>
+                        <span><button type="submit" class="btn btn-info" id="btnPreview" name="preview" onclick="return confirm('Do you want to upload?')">Preview</button></span>
                         </div> <!-- just frame close table bordered closed -->
                     </div> <!-- column close -->
                 <div class="col-lg-3"></div>
@@ -169,9 +169,6 @@
             }            
 
         }
-
-
-
     ?>
  
     </div> <!-- output 12 column space close   --> 

@@ -18,7 +18,7 @@ function searchBarcode($barcode)
                 $truefalse = true;
                 //echo $GLOBALS["itemname"];
                 }
-                
+             $stmt->close();   
             }
             if (!$truefalse) 
             {
@@ -26,7 +26,6 @@ function searchBarcode($barcode)
                 $truefalse = false;
                 //echo $GLOBALS['itemname'];
             }
-            $stmt->close();
             //========================================================================================================
             mysqli_close($conn);
             $conn=null;
@@ -82,16 +81,24 @@ function test($thisFileName)
 function csvPreview($thisFileName)
     {      
          $csvFile = file($thisFileName,FILE_SKIP_EMPTY_LINES | FILE_IGNORE_NEW_LINES);
+            
             $data = [];
-            prepareOutputTableHeader();            
+            
+            prepareOutputTableHeader();  
+            
+            $cnt = 0; //display line numbers     
+
             foreach ($csvFile as $line) 
             {
                 $data[] = str_getcsv($line);
+                
+                $cnt++; //display line number increment
 
                 if (searchBarcode($data[(count($data)-1)][1]))
                 {
                     echo '<tbody>';
                     echo "<tr>";
+                    echo "<td>" . $cnt . "</td>";
                     echo "<td>" . $data[(count($data)-1)][0] . "</td>";
                     echo "<td>" . $data[(count($data)-1)][1] . "</td>";
                     echo "<td>" . $data[(count($data)-1)][2] . "</td>";
@@ -101,12 +108,14 @@ function csvPreview($thisFileName)
                     echo "<td>" . $data[(count($data)-1)][6] . "</td>";
                     echo "<td>" . $data[(count($data)-1)][7] . "</td>";
                     echo "<td><span class='glyphicon glyphicon-ok text-center text-success'></span></td>";
+                    echo "<td><span class='glyphicon glyphicon-remove text-center text-danger'></span></td>";
                     echo "</tr>";
                 }
                 else
                 {
                     echo '<tbody>';
                     echo "<tr>";
+                    echo "<td>" . $cnt . "</td>";
                     echo "<td>" . $data[(count($data)-1)][0] . "</td>";
                     echo "<td>" . $data[(count($data)-1)][1] . "</td>";
                     echo "<td>" . $data[(count($data)-1)][2] . "</td>";
@@ -115,6 +124,7 @@ function csvPreview($thisFileName)
                     echo "<td>" . $data[(count($data)-1)][5] . "</td>";
                     echo "<td>" . $data[(count($data)-1)][6] . "</td>";
                     echo "<td>" . $data[(count($data)-1)][7] . "</td>";
+                    echo "<td><span class='glyphicon glyphicon-remove text-center text-danger'></span></td>";
                     echo "<td><span class='glyphicon glyphicon-remove text-center text-danger'></span></td>";
                     echo "</tr>";
                 }
@@ -132,6 +142,7 @@ function prepareOutputTableHeader()
                 echo '<table class="table table-striped" style="width:100%;">';
                 echo '<thead">';
                 echo '<tr>';
+                echo '<th>SERIAL#</th>';
                 echo '<th>REFERENCE</th>';
                 echo '<th>BARCODE</th>';
                 echo '<th>ITEM</th>';
@@ -174,16 +185,31 @@ function csvUpload($thisFileName)
     {
          $csvFile = file($thisFileName,FILE_SKIP_EMPTY_LINES | FILE_IGNORE_NEW_LINES);
             $data = [];
+
             prepareOutputTableHeader();            
+
+            $cnt = 0; //display line numbers     
+            
             foreach ($csvFile as $line) 
             {
                 $data[] = str_getcsv($line);
+
+                $cnt++; //display line number increment
 
                 if (searchBarcode($data[(count($data)-1)][1]))
                     {
 
                         echo '<tbody>';
-                        echo "<tr>";
+                        if (!empty($data[(count($data)-1)][0]))
+                            {
+                                echo "<tr bgcolor=\"#81c784\">";
+                            }
+                        else
+                            {
+                                echo "<tr bgcolor=\"#ff4081\">";
+                            }
+                        //echo "<tr>";
+                        echo "<td>" . $cnt . "</td>";
                         echo "<td>" . $data[(count($data)-1)][0] . "</td>";
                         echo "<td>" . $data[(count($data)-1)][1] . "</td>";
                         echo "<td>" . $data[(count($data)-1)][2] . "</td>";
@@ -196,11 +222,11 @@ function csvUpload($thisFileName)
                         
                         if (newPurchase($data[(count($data)-1)][1],$data[(count($data)-1)][7],$data[(count($data)-1)][4]))
                         {
-                            echo "<td><span class='glyphicon glyphicon-ok text-center text-success'></span></td>";
+                            echo "<td><span class=\"glyphicon glyphicon-ok text-center text-success\"></span></td>";
                         }
                         else
                         {
-                            echo "<td><span class='glyphicon glyphicon-remove text-center text-success'></span></td>";
+                            echo "<td><span class=\"glyphicon glyphicon-remove text-center text-danger\"></span></td>";
                         }
                         echo "</tr>";
                     }
@@ -208,7 +234,16 @@ function csvUpload($thisFileName)
                     {
 
                         echo '<tbody>';
-                        echo "<tr>";
+                        if (!empty($data[(count($data)-1)][0]))
+                            {
+                                echo "<tr bgcolor=\"#81c784\">";
+                            }
+                        else
+                            {
+                                echo "<tr bgcolor=\"#ff4081\">";
+                            }
+                        //echo "<tr>";
+                        echo "<td>" . $cnt . "</td>"; //Display record number
                         echo "<td>" . $data[(count($data)-1)][0] . "</td>"; //Reference - 0
                         echo "<td>" . $data[(count($data)-1)][1] . "</td>"; //Barcode - 1
                         echo "<td>" . $data[(count($data)-1)][2] . "</td>"; //description - 2
@@ -223,11 +258,11 @@ function csvUpload($thisFileName)
                         if (newProduct($data[(count($data)-1)][0],$data[(count($data)-1)][1],$data[(count($data)-1)][2],
                             $data[(count($data)-1)][3],$data[(count($data)-1)][4],$data[(count($data)-1)][5],$data[(count($data)-1)][7]))
                         {
-                            echo "<td><span class='glyphicon glyphicon-ok text-center text-success'></span></td>";
+                            echo "<td><span class=\"glyphicon glyphicon-ok text-center text-success\"></span></td>";
                         }
                         else
                         {
-                            echo "<td><span class='glyphicon glyphicon-remove text-center text-success'></span></td>";
+                            echo "<td><span class=\"glyphicon glyphicon-remove text-center text-danger\"></span></td>";
                         }
                         echo "</tr>";
                     }
