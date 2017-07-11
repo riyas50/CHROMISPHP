@@ -70,7 +70,6 @@
     <div class="row"> <!-- output row open   --> 
     <div class="col-lg-12"> <!-- output 12 column open   --> 
 
-<<<<<<< HEAD
     </div>
     </div>
 
@@ -161,7 +160,7 @@
                     //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
                     if(csvPreview($target_file))
                                         {
-                        $message = "Upload completed!";
+                        $message = "Preview completed!";
                         echo "<script type='text/javascript'>alert('$message');</script>";
                     }
                 } else {
@@ -185,49 +184,4 @@
     ?>
 
     </body>
-=======
- </div> <!--form group-->
- </div> <!--close row--> 
- </form>
-<br />
-<div class="row">
-<div class="col-lg-4"></div>
-<div class="col-lg-4">
-<div class="col-lg-4"></div>
-</div>
-</div>
-
-<?php 
-
-        session_start();
-        if( strcasecmp($_SERVER['REQUEST_METHOD'],"POST") === 0) {
-            $_SESSION['postdata'] = $_POST;
-            header("Location: ".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']);
-            exit;
-        }
-        if( isset($_SESSION['postdata'])) {
-            $_POST = $_SESSION['postdata'];
-            unset($_SESSION['postdata']);
-        }
-        
-    if (isset($_POST['Save']))
-    {
-        //php code here
-    }
-
-if (isset($_POST['Remove']))
-    {
-        //php code here
-    }
-
-?>
-
-	<?php
-    //include('general.php');
-    putScripts();
-    stickfooter();
-?>
-<!--
--->  </body>
->>>>>>> f05cea53172ad62ae8a169104e71f870e68af1f9
 </html>
