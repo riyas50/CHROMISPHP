@@ -55,7 +55,7 @@ function newPurchase($barcode,$quantity,$buyPrice)
             
             $conn = dbConn();
             
-            $sql = "CALL PRODPURCHASE (now(),1,0,'$barcode',$quantity,$buyPrice,'Navas')";
+            $sql = "CALL PRODPURCHASE (now(),1,0,$barcode,$quantity,$buyPrice,'Navas')";
             
             //echo $sql;
             
@@ -80,10 +80,10 @@ function newPurchase($barcode,$quantity,$buyPrice)
             {
                 echo '<tbody>';
                 echo "<tr>";
-                echo '<td>$barcode</td>';
+                echo '<td>' . $barcode . '</td>';
                 echo '<td>' . $GLOBALS['itemname'] . '</td>';
                 echo '<td >' . $quantity . '</td>';
-                echo '<td>' .$buyPrice . '</td>';
+                echo '<td>' . $buyPrice . '</td>';
                 echo '<td><span class="glyphicon glyphicon-remove text-center text-danger"></span></td>';
                 echo "</tr>";
                 

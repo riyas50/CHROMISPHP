@@ -118,7 +118,7 @@ function uploaddata(){
 			}
 		echo '<br />';
 		}
-}
+}		
 
 //csv preview function
 function previewcsv(){    
