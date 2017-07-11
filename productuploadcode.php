@@ -97,7 +97,17 @@ function csvPreview($thisFileName)
                 if (searchBarcode($data[(count($data)-1)][1]))
                 {
                     echo '<tbody>';
-                    echo "<tr>";
+                    if (!empty($data[(count($data)-1)][0]))
+                        {
+                            echo "<tr Style=\"background-color:#81c784;\">";
+                            //echo $data[(count($data)-1)][0];
+                        }
+                    else
+                        {
+                            echo "<tr Style=\"background-color:#ff4081;\">";
+                            echo "This row is empty!";
+                        }
+                    //echo "<tr>";
                     echo "<td>" . $cnt . "</td>";
                     echo "<td>" . $data[(count($data)-1)][0] . "</td>";
                     echo "<td>" . $data[(count($data)-1)][1] . "</td>";
@@ -114,7 +124,17 @@ function csvPreview($thisFileName)
                 else
                 {
                     echo '<tbody>';
-                    echo "<tr>";
+                    if (!empty($data[(count($data)-1)][0]))
+                        {
+                            echo "<tr Style=\"background-color:#81c784;\">";
+                            //echo $data[(count($data)-1)][0];
+                        }
+                    else
+                        {
+                            echo "<tr Style=\"background-color:#ff4081;\">";
+                            echo "This row is empty!";
+                        }
+                    //echo "<tr>";
                     echo "<td>" . $cnt . "</td>";
                     echo "<td>" . $data[(count($data)-1)][0] . "</td>";
                     echo "<td>" . $data[(count($data)-1)][1] . "</td>";
