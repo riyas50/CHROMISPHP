@@ -46,18 +46,50 @@ function putScripts()
     }
 
 function putDatePickerScript()
-{
-    echo '<script type="text/javascript">
-    $(".form_datetime").datetimepicker({
-        format: "dd mm yyyy hh:ii:ss",
-        sideBySide: false,
-        autoclose: true
+    {
+        echo "
+        <Script>
+        $('.form_datetime').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 0,
+        showMeridian: 1
     });
-    </script> ';
-}
+	$('.form_date').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+	$('.form_time').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 1,
+		minView: 0,
+		maxView: 1,
+		forceParse: 0
+    });
+    </Script>";
+    }
 
 function putButtonValidatorException()
 {
-    
+    //validator css related, not sure;   
+}
+
+function displayMessage($thisMessage){
+                            $message = $thisMessage;
+                        echo "<script type='text/javascript'>alert('$message');</script>";
 }
 ?>

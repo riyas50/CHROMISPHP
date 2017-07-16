@@ -17,6 +17,14 @@ select * from taxes;
 select * from taxlines;
 select * from taxcustcategories;
 
+select * from ticketlines;
+select * from tickets;
+select * from ticketsnum;
+select * from ticketsnum_invoice;
+select * from sharedtickets;
+select * from ticketsnum_payment;
+select * from ticketsnum_refund;
+select * from stockdiary;
 /*
 select count(units) from stockcurrent   
 */
