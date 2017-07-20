@@ -4,7 +4,7 @@
     <?php
         include('general.php');
         //include('dbconnect.php');
-        include('prodpurchcode.php');
+        include('Report_ProductSalesProfitcode.php');
         putLinks();
 
         session_start();
@@ -27,7 +27,7 @@
 <header class="site__header island">
   <div class="wrap">
    <span id="animationSandbox" style="display: block;"  class="tada animated">
-   <h1 class="site__title mega text-center">Report - Product Sales:Profit</h1>
+   <h1 class="site__title mega text-center">Report - Product Sales:Profit Till Date</h1>
    </span>
   </div>
   </header>
@@ -35,10 +35,10 @@
 <form action="Report_ProductSalesProfit.php" method="post" enctype="multipart/form-data" >
  <div class="row">
  <div class="form-group">
-    <div class="col-lg-4"></div>
+    <div class="col-lg-4 text-right"></div>
 
     <div class="col-lg-4 text-right">
-                    
+                    <a class="glyphicon glyphicon-home" style="font-size:30px;color:orange" href="/chromisphp/"></a> 
                     
                     <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input1" data-link-format="<mm-dd-yyyy></mm-dd-yyyy>">
                         <input class="form-control" size="16" type="text" value="" readonly>
@@ -74,8 +74,9 @@
 
         if (isset($_POST['btnReport']))
         {
-            displayMessage($_POST['dtp_input1']);
+            //displayMessage($_POST['dtp_input1']);
             // echo "<meta http-equiv='refresh' content='0'>";
+            profitTillDate();
         }
 
         if (isset($_POST['btnClear']))

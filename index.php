@@ -53,7 +53,7 @@
           <h4 style="color:red;">Reports</h4>
       </div>
       <div class="panel-body">
-        <a class="btn btn-info" href="/chromisphp/Report_ProductSalesProfit.php">Product Sales: Profit</a>
+        <a class="btn btn-info" href="/chromisphp/Report_ProductSalesProfit.php">Product Sales: Profit Till Date</a>
         <a class="btn btn-warning" href="#">No Reports</a>
   </div>
   </div>
