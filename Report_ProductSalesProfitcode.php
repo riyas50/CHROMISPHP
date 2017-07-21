@@ -43,7 +43,7 @@ function profitTillDate()
                         }
                     else
                         {
-                            echo "<td align=\"right\" bgcolor=\"#32cb00\">" . number_format($EXPECTED_PROFIT,2,'.','') . "</td>";
+                            echo "<td align=\"right\">" . number_format($EXPECTED_PROFIT,2,'.','') . "</td>";
                         }
                     
                     echo "</tr>";
