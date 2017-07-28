@@ -1,3 +1,4 @@
+use chromispos;
 -- mySQL or MariaDB Queries for Chromis POS analysis
 select * from products 
 -- where REFERENCE='1008'
@@ -47,4 +48,9 @@ delete from stockdiary;
 delete from stockcurrent;
 delete from products;
 delete from categories;
+*/
+/*
+call SALESPROFITDATE(NULL,NULL);
+call SALESPROFITDATE('2017/07/14',NULL);
+call SALESPROFITDATE('2017/07/14','2017/07/28');
 */

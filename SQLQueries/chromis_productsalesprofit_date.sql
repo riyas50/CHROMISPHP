@@ -1,9 +1,9 @@
-﻿use chromispos;
--- /*
--- =============================================================================================================
--- ALL SALES TILL DATE
+﻿-- Date field added
+use chromispos;
 SELECT PRODUCTS.REFERENCE, 
-       PRODUCTS.NAME, 
+       PRODUCTS.NAME,
+       DATE_FORMAT(STOCKDIARY.DATENEW,"%d/%m/%Y") AS TDATE, 
+       DATE_FORMAT(STOCKDIARY.DATENEW,"%h:%i:%s %p") AS TTIME,
        PRODUCTS.PRICEBUY, 
        PRODUCTS.PRICESELL, 
        SUM(TICKETLINES.UNITS) AS SOLD_UNITS, 
@@ -20,8 +20,12 @@ SELECT PRODUCTS.REFERENCE,
            ON (TICKETLINES.TICKET = RECEIPTS.ID)) 
        LEFT OUTER JOIN PRODUCTS PRODUCTS 
           ON (TICKETLINES.PRODUCT = PRODUCTS.ID) 
-    GROUP BY TICKETLINES.PRODUCT 
-    ORDER BY PRODUCTS.REFERENCE ASC;
--- WHERE ?(QBF_FILTER) 
- -- */
+       RIGHT JOIN STOCKDIARY STOCKDIARY
+          ON (STOCKDIARY.PRODUCT=PRODUCTS.ID)
+    -- WHERE STOCKDIARY.DATENEW >= '2017/07/14' AND STOCKDIARY.DATENEW < '2017/07/15'
+       WHERE DATE(STOCKDIARY.DATENEW) = '2017/07/14' 
+    GROUP BY TICKETLINES.PRODUCT,STOCKDIARY.DATENEW  -- DATE_FORMAT(STOCKDIARY.DATENEW,"%d-%m-%Y") 
+    ORDER BY PRODUCTS.REFERENCE ASC;    
+-- WHERE ? (QBF_FILTER) 
+    -- WHERE DATE_FORMAT(STOCKDIARY.DATENEW,%d-%m-%Y") = '14-07-2017'
 -- =============================================================================================================

@@ -27,7 +27,7 @@
 <header class="site__header island">
   <div class="wrap">
    <span id="animationSandbox" style="display: block;"  class="tada animated">
-   <h1 class="site__title mega text-center">Report - Product Sales:Profit Till Date</h1>
+   <h1 class="site__title mega text-center">Report - Product Sales:Profit</h1>
    </span>
   </div>
   </header>
@@ -40,7 +40,7 @@
     <div class="col-lg-4 text-right">
                     <a class="glyphicon glyphicon-home" style="font-size:30px;color:orange" href="/chromisphp/"></a> 
                     
-                    <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input1" data-link-format="<mm-dd-yyyy></mm-dd-yyyy>">
+                    <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input1" data-link-format="yyyy/mm/dd">
                         <input class="form-control" size="16" type="text" value="" readonly>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -48,7 +48,7 @@
                       <input type="hidden" name="dtp_input1" id="dtp_input1" value="" />  
                 <!--</div>-->
                 <!---->
-                    <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                    <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy/mm/dd">
                         <input class="form-control" size="16" type="text" value="" readonly>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -56,6 +56,11 @@
                       <input type="hidden" name="dtp_input2" id="dtp_input2" value="" />  
                 <!--</div>-->
                 <!---->
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="chkAllSales" name="chkAllSales" value="All"> All Profit Till Date
+                    </label>
+                </div>
 <br />
      <button type="submit" class="btn btn-success" id="btnReport" name="btnReport" >Run Report</button>
      <button type="submit" class="btn btn-warning" id="btnClear" name="btnClear" >Clear</button>
@@ -70,18 +75,61 @@
 <br />
         <?php 
 
-
-
         if (isset($_POST['btnReport']))
-        {
-            //displayMessage($_POST['dtp_input1']);
-            // echo "<meta http-equiv='refresh' content='0'>";
-            profitTillDate();
-        }
+            {
+                //displayMessage($_POST['dtp_input1']);
+                // echo "<meta http-equiv='refresh' content='0'>";
+                if ((!empty($_POST['dtp_input1'])) && (!empty($_POST['dtp_input2'])))
+                    {
+                        $date1 = date($_POST['dtp_input1']);
+                        $date2 = date($_POST['dtp_input2']);
+
+                        //$date1 = 
+                        if($date2 > $date1)
+                            {
+                                //displayMessage('Date 1: ' . $date1 . '\n' . 'Date 2: ' . $date2);
+                                profitDateFilter($date1,$date2);
+                            }
+                        else 
+                            {
+                                displayMessage('Invalid date selection');                                                  
+                            }
+                    }
+                elseif ((!empty($_POST['dtp_input1'])) && (empty($_POST['dtp_input2']))) 
+                    {
+                        # code...
+                        $date1 = date($_POST['dtp_input1']);                        
+                        //displayMessage('Date 2 empty!');
+                        profitDateFilter($date1,'');
+                    }
+                elseif ((empty($_POST['dtp_input1'])) && (!empty($_POST['dtp_input2']))) 
+                    {
+                        # code...
+                        displayMessage('Invalid date selection');  
+                    }
+                else {
+                    # code...
+                    //displayMessage('empty!');
+                    if((empty($_POST['chkAllSales'])))
+                        {
+                            //displayMessage($_POST['chkAllSales']);
+                            profitTillDate();
+
+                        }
+                    if((!empty($_POST['chkAllSales'])))
+                        {
+                            //displayMessage($_POST['chkAllSales']);
+                            profitDateFilter('','');
+                        } 
+                }
+
+                //profitTillDate();
+            }
 
         if (isset($_POST['btnClear']))
         {
             //php code here
+            echo "<meta http-equiv='refresh' content='0'>";
         }
 
         ?>

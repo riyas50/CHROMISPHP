@@ -6,3 +6,4 @@ select * from products;
         select * from stocklevel;
           select * from locations;
             select * from categories;	
+
