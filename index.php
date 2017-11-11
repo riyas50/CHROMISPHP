@@ -26,6 +26,7 @@
    <a class="btn btn-info" href="/chromisphp/productsearch.php"> Search</a>
   <a class="btn btn-danger" href="#">New Product</a>
   <a class="btn btn-success" href="/chromisphp/productpurchase.php">Purchase</a>
+  <a class="btn btn-warning" href="/chromisphp/marginsearch.php">Distribution</a>
   </div>
   </div>
     <div class="Panel table-bordered">
