@@ -60,7 +60,7 @@
                 //printf("%s, %s, %s, %s, %s, %s, %s, %s\n", $CODE, $REFERENCE, $NAME, $PRICESELL, $PRICEBUY, $NAME1, $UNITS, $NAME3);
                         echo '<tbody>';
                         echo "<tr><td>". $CODE ."</td>";
-                        echo "<td>". $REFERENCE ."</td>";
+                        echo "<td>". "12." . $REFERENCE ."</td>";
                         echo "<td>". $NAME ."</td>";
                         echo "<td>". number_format($PRICESELL,2,'.','') ."</td>";
                         if($MRPMARGIN<=0)
@@ -158,7 +158,7 @@
                     //printf("%s, %s, %s, %s, %s, %s, %s, %s\n", $CODE, $REFERENCE, $NAME, $PRICESELL, $PRICEBUY, $NAME1, $UNITS, $NAME3);
                         $noRecord = true;
                         echo "<tr><td>". $CODE ."</td>";
-                        echo "<td>". $REFERENCE ."</td>";
+                        echo "<td>" . "12." . $REFERENCE ."</td>";
                         echo "<td>". $NAME ."</td>";
                         echo "<td>". number_format($PRICESELL,2,'.','') ."</td>";
                         if($MRPMARGIN<=0)
