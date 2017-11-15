@@ -20,7 +20,11 @@
 <form action="marginsearch.php" method="post" enctype="multipart/form-data">
  <div class="row">
  <div class="form-group">
- <div class="col-lg-4"></div>
+ <div class="col-lg-4">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" frame scrolling="yes" src="./estimate.php"></iframe>
+    </div>
+ </div>
  <div class="col-lg-4 text-right">
           <a class="glyphicon glyphicon-home" style="font-size:30px;color:orange" href="/chromisphp/"></a> 
  <div class="input-group">

@@ -44,6 +44,13 @@ delete from stockcurrent where units>0;
 
 
 /*
+delete  from ticketlines;
+delete  from tickets;
+delete  from ticketsnum;
+delete  from ticketsnum_invoice;
+delete  from sharedtickets;
+delete  from ticketsnum_payment;
+delete  from ticketsnum_refund;
 delete from stockdiary;
 delete from stockcurrent;
 delete from products;
@@ -53,4 +60,14 @@ delete from categories;
 call SALESPROFITDATE(NULL,NULL);
 call SALESPROFITDATE('2017/07/14',NULL);
 call SALESPROFITDATE('2017/07/14','2017/07/28');
+*/
+
+/*
+select * from estimate;
+insert into estimate VALUES ('62',136.00,5);
+insert into estimate VALUES ('260',323.00,5);
+
+SELECT e.CODE,p.NAME,e.PRICESELL,e.QUANTITY
+  FROM estimate e
+  INNER JOIN products p on p.CODE = e.CODE
 */
