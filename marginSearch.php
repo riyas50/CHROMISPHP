@@ -12,7 +12,7 @@
     <header class="site__header island">
     <div class="wrap">
     <span id="animationSandbox" style="display: block;"  class="tada animated">
-    <h1 class="site__title mega text-center">Product Magrin Search</h1>
+    <h1 class="site__title mega text-center">Product Distribution</h1>
     </span>
     </div>
   </header>

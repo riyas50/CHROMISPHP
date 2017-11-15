@@ -12,17 +12,17 @@
             echo '<th>REFERENCE</th>';
             echo '<th>ITEM</th>';
             echo '<th>MRP</th>';
-            echo '<th>MARGIN%</th>';
-            echo '<th>@ 1%</th>';
-            echo '<th>@ 2%</th>';
-            echo '<th>@ 3%</th>';
-            echo '<th>@ 4%</th>';
-            echo '<th>@ 5%</th>';
-            echo '<th>@ 6%</th>';
-            echo '<th>@ 7%</th>';
-            echo '<th>@ 8%</th>';
-            echo '<th>@ 9%</th>';
-            echo '<th>@ 10%</th>';
+            echo '<th>PM</th>';
+            echo '<th>@ 1</th>';
+            echo '<th>@ 2</th>';
+            echo '<th>@ 3</th>';
+            echo '<th>@ 4</th>';
+            echo '<th>@ 5</th>';
+            echo '<th>@ 6</th>';
+            echo '<th>@ 7</th>';
+            echo '<th>@ 8</th>';
+            echo '<th>@ 9</th>';
+            echo '<th>@ 10</th>';
             echo '<th>CATEGORY</th>';
             echo '<th>STOCK</th>';
             echo '<th>TAX TYPE</th>';
@@ -32,19 +32,19 @@
             $conn = dbConn();
         //========================================================================================================
         //below code generated with workbench plugin for php under tools > utilities
-        $query = "SELECT   products.CODE 'BARCODE',   products.REFERENCE,   products.NAME,   
+        $query = "SELECT   products.CODE 'BARCODE',   (products.PRICEBUY*100) REF,   products.NAME,   
         products.PRICESELL,   
         ROUND((((products.PRICESELL - products.PRICEBUY) * 100)/products.PRICESELL),2) AS MRPMargin,   
-        FORMAT(CEILING((products.PRICEBUY / ((100-1)/100))),2) 'SELL 1PER',
-        FORMAT(CEILING((products.PRICEBUY / ((100-2)/100))),2) 'SELL 2PER',
-        FORMAT(CEILING((products.PRICEBUY / ((100-3)/100))),2) 'SELL 3PER',
-        FORMAT(CEILING((products.PRICEBUY / ((100-4)/100))),2) 'SELL 4PER',
-        FORMAT(CEILING((products.PRICEBUY / ((100-5)/100))),2) 'SELL 5PER',
-        FORMAT(CEILING((products.PRICEBUY / ((100-6)/100))),2) 'SELL 6PER',
-        FORMAT(CEILING((products.PRICEBUY / ((100-7)/100))),2) 'SELL 7PER',
-        FORMAT(CEILING((products.PRICEBUY / ((100-8)/100))),2) 'SELL 8PER',
-        FORMAT(CEILING((products.PRICEBUY / ((100-9)/100))),2) 'SELL 9PER',
-        FORMAT(CEILING((products.PRICEBUY / ((100-10)/100))),2) 'SELL 10PER',        
+        FORMAT((products.PRICEBUY / ((100-1)/100)),2) 'SELL 1PER',
+        FORMAT((products.PRICEBUY / ((100-2)/100)),2) 'SELL 2PER',
+        FORMAT((products.PRICEBUY / ((100-3)/100)),2) 'SELL 3PER',
+        FORMAT((products.PRICEBUY / ((100-4)/100)),2) 'SELL 4PER',
+        FORMAT((products.PRICEBUY / ((100-5)/100)),2) 'SELL 5PER',
+        FORMAT((products.PRICEBUY / ((100-6)/100)),2) 'SELL 6PER',
+        FORMAT((products.PRICEBUY / ((100-7)/100)),2) 'SELL 7PER',
+        FORMAT((products.PRICEBUY / ((100-8)/100)),2) 'SELL 8PER',
+        FORMAT((products.PRICEBUY / ((100-9)/100)),2) 'SELL 9PER',
+        FORMAT((products.PRICEBUY / ((100-10)/100)),2) 'SELL 10PER',        
         categories.NAME as 'CATEGORY',   
         stockcurrent.UNITS AS 'CURRENT STOCK',   taxes.NAME as 'TAX CATEGORY' 
         FROM stockcurrent   
@@ -64,8 +64,8 @@
                         echo "<td>". $NAME ."</td>";
                         echo "<td>". number_format($PRICESELL,2,'.','') ."</td>";
                         if($MRPMARGIN<=0)
-                        {echo "<td align=\"right\" bgcolor=\"#f4511e\">". $MRPMARGIN . '%' ."</td>";}
-                        else{echo "<td>". $MRPMARGIN . '%' ."</td>";}
+                        {echo "<td align=\"right\" bgcolor=\"#f4511e\">". $MRPMARGIN ."</td>";}
+                        else{echo "<td>". $MRPMARGIN ."</td>";}
                         echo "<td bgcolor=\"#001f3f\">" . "<font color=\"#7fdbff\">" . $SELL1PER . "</font>" . "</td>";
                         echo "<td bgcolor=\"#0074D9\">". "<font color=\"#fff\">" . $SELL2PER . "</font>" . "</td>";
                         echo "<td bgcolor=\"#7FDBFF\">". "<font color=\"#333\">" . $SELL3PER . "</font>" . "</td>";
@@ -105,17 +105,17 @@
             echo '<th>REFERENCE</th>';
             echo '<th>ITEM</th>';
             echo '<th>MRP</th>';
-            echo '<th>MRP%</th>';
-            echo '<th>@ 1%</th>';
-            echo '<th>@ 2%</th>';
-            echo '<th>@ 3%</th>';
-            echo '<th>@ 4%</th>';
-            echo '<th>@ 5%</th>';
-            echo '<th>@ 6%</th>';
-            echo '<th>@ 7%</th>';
-            echo '<th>@ 8%</th>';
-            echo '<th>@ 9%</th>';
-            echo '<th>@ 10%</th>';            
+            echo '<th>PM</th>';
+            echo '<th>@ 1</th>';
+            echo '<th>@ 2</th>';
+            echo '<th>@ 3</th>';
+            echo '<th>@ 4</th>';
+            echo '<th>@ 5</th>';
+            echo '<th>@ 6</th>';
+            echo '<th>@ 7</th>';
+            echo '<th>@ 8</th>';
+            echo '<th>@ 9</th>';
+            echo '<th>@ 10</th>';            
             echo '<th>CATEGORY</th>';
             echo '<th>STOCK</th>';
             echo '<th>TAX TYPE</th>';
@@ -125,19 +125,19 @@
             $conn = dbConn();
         //========================================================================================================
         //below code generated with workbench plugin for php under tools > utilities
-                $query = "SELECT   products.CODE 'BARCODE',   products.REFERENCE,  
+                $query = "SELECT   products.CODE 'BARCODE',   (products.PRICEBUY*100) REF,  
                  products.NAME,   products.PRICESELL,   
                 ROUND((((products.PRICESELL - products.PRICEBUY) * 100)/products.PRICESELL),2) AS MRPMargin,
-                FORMAT(CEILING((products.PRICEBUY / ((100-1)/100))),2) 'SELL 1PER',
-                FORMAT(CEILING((products.PRICEBUY / ((100-2)/100))),2) 'SELL 2PER',
-                FORMAT(CEILING((products.PRICEBUY / ((100-3)/100))),2) 'SELL 3PER',
-                FORMAT(CEILING((products.PRICEBUY / ((100-4)/100))),2) 'SELL 4PER',
-                FORMAT(CEILING((products.PRICEBUY / ((100-5)/100))),2) 'SELL 5PER',
-                FORMAT(CEILING((products.PRICEBUY / ((100-6)/100))),2) 'SELL 6PER',
-                FORMAT(CEILING((products.PRICEBUY / ((100-7)/100))),2) 'SELL 7PER',
-                FORMAT(CEILING((products.PRICEBUY / ((100-8)/100))),2) 'SELL 8PER',
-                FORMAT(CEILING((products.PRICEBUY / ((100-9)/100))),2) 'SELL 9PER',
-                FORMAT(CEILING((products.PRICEBUY / ((100-10)/100))),2) 'SELL 10PER',                 
+                FORMAT((products.PRICEBUY / ((100-1)/100)),2) 'SELL 1PER',
+                FORMAT((products.PRICEBUY / ((100-2)/100)),2) 'SELL 2PER',
+                FORMAT((products.PRICEBUY / ((100-3)/100)),2) 'SELL 3PER',
+                FORMAT((products.PRICEBUY / ((100-4)/100)),2) 'SELL 4PER',
+                FORMAT((products.PRICEBUY / ((100-5)/100)),2) 'SELL 5PER',
+                FORMAT((products.PRICEBUY / ((100-6)/100)),2) 'SELL 6PER',
+                FORMAT((products.PRICEBUY / ((100-7)/100)),2) 'SELL 7PER',
+                FORMAT((products.PRICEBUY / ((100-8)/100)),2) 'SELL 8PER',
+                FORMAT((products.PRICEBUY / ((100-9)/100)),2) 'SELL 9PER',
+                FORMAT((products.PRICEBUY / ((100-10)/100)),2) 'SELL 10PER',                 
                  categories.NAME as 'CATEGORY',   stockcurrent.UNITS AS 'CURRENT STOCK',   
                  taxes.NAME as 'TAX CATEGORY' FROM stockcurrent   
                  INNER JOIN products     ON stockcurrent.PRODUCT = products.ID  
@@ -162,8 +162,8 @@
                         echo "<td>". $NAME ."</td>";
                         echo "<td>". number_format($PRICESELL,2,'.','') ."</td>";
                         if($MRPMARGIN<=0)
-                        {echo "<td align=\"right\" bgcolor=\"#f4511e\">". $MRPMARGIN . '%' ."</td>";}
-                        else{echo "<td>". $MRPMARGIN . '%' ."</td>";}
+                        {echo "<td align=\"right\" bgcolor=\"#f4511e\">". $MRPMARGIN ."</td>";}
+                        else{echo "<td>". $MRPMARGIN ."</td>";}
                         echo "<td bgcolor=\"#001f3f\">" . "<font color=\"#7fdbff\">" . $SELL1PER . "</font>" . "</td>";
                         echo "<td bgcolor=\"#0074D9\">". "<font color=\"#fff\">" . $SELL2PER . "</font>" . "</td>";
                         echo "<td bgcolor=\"#7FDBFF\">". "<font color=\"#333\">" . $SELL3PER . "</font>" . "</td>";
