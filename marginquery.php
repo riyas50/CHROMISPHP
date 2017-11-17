@@ -1,7 +1,8 @@
 <?php
     
     include('dbconnect.php');
-    function refreshRecords() {
+    function refreshRecords() 
+        {
 
         
             echo '<div class="panel panel-default">';  
@@ -90,80 +91,137 @@
 
 
                         echo "<td class=\"text-center\" bgcolor=\"#001f3f\">" . "<font color=\"#7fdbff\">" . 
-                        number_format(floatval($SELL12PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-12)),2) . "<br />" .
+                        number_format(floatval($SELL12PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL12PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .                        
+                        number_format(floatval(($MRPMARGIN-12)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "24" . "<br />" . number_format(floatval($SELL24PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-24)),2) .
+                        "<br />" . "24" . "<br />" . 
+                        number_format(floatval($SELL24PER),2) . "<br />" .
+                        "<a href=\"./estimateActions.php?addRec=$SELL24PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" . 
+                        number_format(floatval(($MRPMARGIN-24)),2) .
                         "</font>" . "</td>";
 
                         echo "<td class=\"text-center\" bgcolor=\"#0074D9\">". "<font color=\"#fff\">" . 
-                        number_format(floatval($SELL11PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-11)),2) . "<br />" .
+                        number_format(floatval($SELL11PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL11PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-11)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "23" ."<br />" . number_format(floatval($SELL23PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-23)),2) .
+                        "<br />" . "23" ."<br />" . 
+                        number_format(floatval($SELL23PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL23PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-23)),2) .
                         "</font>" . "</td>";
                         
                         echo "<td class=\"text-center\" bgcolor=\"#7FDBFF\">". "<font color=\"#333\">" . 
-                        number_format(floatval($SELL10PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-10)),2) .  "<br />" .
+                        number_format(floatval($SELL10PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL10PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-10)),2) .  "<br />" .
                         "---------" .
-                        "<br />" . "22" ."<br />" . number_format(floatval($SELL22PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-22)),2) .                        
+                        "<br />" . "22" ."<br />" . number_format(floatval($SELL22PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL22PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-22)),2) .                        
                         "</font>" . "</td>";
                         
                         echo "<td class=\"text-center\" bgcolor=\"#2ECC40\">". "<font color=\"#fff\">" . 
-                        number_format(floatval($SELL9PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-9)),2) . "<br />" .
+                        number_format(floatval($SELL9PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL9PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-9)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "21" ."<br />" . number_format(floatval($SELL21PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-21)),2) .                          
+                        "<br />" . "21" ."<br />" . 
+                        number_format(floatval($SELL21PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL21PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-21)),2) .                          
                         "</font>" . "</td>";
                         
                         echo "<td class=\"text-center\" bgcolor=\"#FFDC00\">" . "<font color=\"#000\">" . 
-                        number_format($SELL8PER,2) ."<br />" . number_format(($MRPMARGIN-8)) . "<br />" .
+                        number_format(floatval($SELL8PER),2) ."<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL8PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-8)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "20" ."<br />" . number_format(floatval($SELL20PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-20)),2) .                           
+                        "<br />" . "20" ."<br />" . 
+                        number_format(floatval($SELL20PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL20PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-20)),2) .                           
                         "</font>" . "</td>";
                         
                         echo "<td class=\"text-center\" bgcolor=\"#111111\">" . "<font color=\"#fff\">" .
-                        number_format(floatval($SELL7PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-7)),2) . "<br />" .
+                        number_format(floatval($SELL7PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL7PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-7)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "19" ."<br />" . number_format(floatval($SELL19PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-19)),2) .                           
+                        "<br />" . "19" ."<br />" . 
+                        number_format(floatval($SELL19PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL19PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-19)),2) .                           
                         "</font>" . "</td>";
                         
                         echo "<td class=\"text-center\" bgcolor=\"#FF851B\">" . "<font color=\"#fff\">" .
-                        number_format(floatval($SELL6PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-6)),2) . "<br />" .
+                        number_format(floatval($SELL6PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL6PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-6)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "18" ."<br />" . number_format(floatval($SELL18PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-18)),2) .                           
+                        "<br />" . "18" ."<br />" . 
+                        number_format(floatval($SELL18PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL18PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-18)),2) .                           
                         "</font>" . "</td>";
                         
                         echo "<td class=\"text-center\" bgcolor=\"#F012BE\">" . "<font color=\"#fff\">" . 
-                        number_format(floatval($SELL5PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-5)),2) . "<br />" .
+                        number_format(floatval($SELL5PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL5PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-5)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "17" ."<br />" . number_format(floatval($SELL17PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-17)),2) .                           
+                        "<br />" . "17" ."<br />" . 
+                        number_format(floatval($SELL17PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL17PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-17)),2) .                           
                         "</font>" . "</td>";
                         
                         echo "<td class=\"text-center\" bgcolor=\"#39CCCC\">" . "<font color=\"#fff\">" .
-                        number_format(floatval($SELL4PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-4)),2) . "<br />" .
+                        number_format(floatval($SELL4PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL4PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-4)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "16" ."<br />" . number_format(floatval($SELL16PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-16)),2) .                           
+                        "<br />" . "16" ."<br />" . 
+                        number_format(floatval($SELL16PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL16PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-16)),2) .                           
                         "</font>" . "</td>";
                         
                         echo "<td class=\"text-center\" bgcolor=\"#001f3f\">" . "<font color=\"#7fdbff\">" . 
-                        number_format(floatval($SELL3PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-3)),2) . "<br />" .
+                        number_format(floatval($SELL3PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL3PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-3)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "15" ."<br />" . number_format(floatval($SELL15PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-15)),2) .                           
+                        "<br />" . "15" ."<br />" . 
+                        number_format(floatval($SELL15PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL15PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-15)),2) .                           
                         "</font>" . "</td>";
 
                         
                         echo "<td class=\"text-center\" bgcolor=\"#0074D9\">". "<font color=\"#fff\">" . 
-                        number_format(floatval($SELL2PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-2)),2) . "<br />" .
+                        number_format(floatval($SELL2PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL2PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-2)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "14" ."<br />" . number_format(floatval($SELL14PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-14)),2) .                           
+                        "<br />" . "14" ."<br />" . 
+                        number_format(floatval($SELL14PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL14PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-14)),2) .                           
                         "</font>" . "</td>";
                         
                         echo "<td class=\"text-center\" bgcolor=\"#FF4136\">" . "<font color=\"#fff\">" .
-                        number_format(floatval($SELL1PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-1)),2) . "<br />" .
+                        number_format(floatval($SELL1PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL1PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-1)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "13" ."<br />" . number_format(floatval($SELL13PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-13)),2) .                           
+                        "<br />" . "13" ."<br />" . 
+                        number_format(floatval($SELL13PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL13PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-13)),2) .                           
                         "</font>" . "</td>";
-
                         //echo "<td>". $CATEGORY ."</td>";
-                        
                         echo "<td class=\"text-center\">". $STOCK ."</td>";
                         //echo "<td>". $TAXCAT ."</td>";
                         echo "</tr>";
@@ -181,8 +239,8 @@
         } 
         //function refreshrecords()
 
-        function filterRecords($barcode,$item,$category) 
-            {
+    function filterRecords($barcode,$item,$category) 
+        {
             echo '<div class="panel panel-default">';  
             echo '<table class="table table-striped">';
             echo '<thead>';
@@ -269,76 +327,135 @@
                         else{echo "<td>". $MRPMARGIN ."</td>";}
 
                         echo "<td class=\"text-center\" bgcolor=\"#001f3f\">" . "<font color=\"#7fdbff\">" . 
-                        number_format(floatval($SELL12PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-12)),2) . "<br />" .
-                        "---------" .
-                        "<br />" . "24" . "<br />" . number_format(floatval($SELL24PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-24)),2) .
+                        number_format(floatval($SELL12PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL12PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .                        
+                        number_format(floatval(($MRPMARGIN-12)),2) . "<br />" .
+                        "-----------" .
+                        "<br />" . "24" . "<br />" . 
+                        number_format(floatval($SELL24PER),2) . "<br />" .
+                        "<a href=\"./estimateActions.php?addRec=$SELL24PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" . 
+                        number_format(floatval(($MRPMARGIN-24)),2) .
                         "</font>" . "</td>";
 
                         echo "<td class=\"text-center\" bgcolor=\"#0074D9\">". "<font color=\"#fff\">" . 
-                        number_format(floatval($SELL11PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-11)),2) . "<br />" .
+                        number_format(floatval($SELL11PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL11PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-11)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "23" ."<br />" . number_format(floatval($SELL23PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-23)),2) .
+                        "<br />" . "23" ."<br />" . 
+                        number_format(floatval($SELL23PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL23PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-23)),2) .
                         "</font>" . "</td>";
                         
                         echo "<td class=\"text-center\" bgcolor=\"#7FDBFF\">". "<font color=\"#333\">" . 
-                        number_format(floatval($SELL10PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-10)),2) .  "<br />" .
+                        number_format(floatval($SELL10PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL10PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-10)),2) .  "<br />" .
                         "---------" .
-                        "<br />" . "22" ."<br />" . number_format(floatval($SELL22PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-22)),2) .                        
+                        "<br />" . "22" ."<br />" . number_format(floatval($SELL22PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL22PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-22)),2) .                        
                         "</font>" . "</td>";
                         
                         echo "<td class=\"text-center\" bgcolor=\"#2ECC40\">". "<font color=\"#fff\">" . 
-                        number_format(floatval($SELL9PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-9)),2) . "<br />" .
+                        number_format(floatval($SELL9PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL9PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-9)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "21" ."<br />" . number_format(floatval($SELL21PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-21)),2) .                          
+                        "<br />" . "21" ."<br />" . 
+                        number_format(floatval($SELL21PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL21PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-21)),2) .                          
                         "</font>" . "</td>";
                         
                         echo "<td class=\"text-center\" bgcolor=\"#FFDC00\">" . "<font color=\"#000\">" . 
-                        number_format($SELL8PER,2) ."<br />" . number_format(($MRPMARGIN-8)) . "<br />" .
+                        number_format(floatval($SELL8PER),2) ."<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL8PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-8)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "20" ."<br />" . number_format(floatval($SELL20PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-20)),2) .                           
+                        "<br />" . "20" ."<br />" . 
+                        number_format(floatval($SELL20PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL20PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-20)),2) .                           
                         "</font>" . "</td>";
                         
                         echo "<td class=\"text-center\" bgcolor=\"#111111\">" . "<font color=\"#fff\">" .
-                        number_format(floatval($SELL7PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-7)),2) . "<br />" .
+                        number_format(floatval($SELL7PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL7PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-7)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "19" ."<br />" . number_format(floatval($SELL19PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-19)),2) .                           
+                        "<br />" . "19" ."<br />" . 
+                        number_format(floatval($SELL19PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL19PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-19)),2) .                           
                         "</font>" . "</td>";
                         
                         echo "<td class=\"text-center\" bgcolor=\"#FF851B\">" . "<font color=\"#fff\">" .
-                        number_format(floatval($SELL6PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-6)),2) . "<br />" .
+                        number_format(floatval($SELL6PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL6PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-6)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "18" ."<br />" . number_format(floatval($SELL18PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-18)),2) .                           
+                        "<br />" . "18" ."<br />" . 
+                        number_format(floatval($SELL18PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL18PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-18)),2) .                           
                         "</font>" . "</td>";
                         
                         echo "<td class=\"text-center\" bgcolor=\"#F012BE\">" . "<font color=\"#fff\">" . 
-                        number_format(floatval($SELL5PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-5)),2) . "<br />" .
+                        number_format(floatval($SELL5PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL5PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-5)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "17" ."<br />" . number_format(floatval($SELL17PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-17)),2) .                           
+                        "<br />" . "17" ."<br />" . 
+                        number_format(floatval($SELL17PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL17PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-17)),2) .                           
                         "</font>" . "</td>";
                         
                         echo "<td class=\"text-center\" bgcolor=\"#39CCCC\">" . "<font color=\"#fff\">" .
-                        number_format(floatval($SELL4PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-4)),2) . "<br />" .
+                        number_format(floatval($SELL4PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL4PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-4)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "16" ."<br />" . number_format(floatval($SELL16PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-16)),2) .                           
+                        "<br />" . "16" ."<br />" . 
+                        number_format(floatval($SELL16PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL16PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-16)),2) .                           
                         "</font>" . "</td>";
                         
                         echo "<td class=\"text-center\" bgcolor=\"#001f3f\">" . "<font color=\"#7fdbff\">" . 
-                        number_format(floatval($SELL3PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-3)),2) . "<br />" .
+                        number_format(floatval($SELL3PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL3PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-3)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "15" ."<br />" . number_format(floatval($SELL15PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-15)),2) .                           
+                        "<br />" . "15" ."<br />" . 
+                        number_format(floatval($SELL15PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL15PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-15)),2) .                           
                         "</font>" . "</td>";
 
                         
                         echo "<td class=\"text-center\" bgcolor=\"#0074D9\">". "<font color=\"#fff\">" . 
-                        number_format(floatval($SELL2PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-2)),2) . "<br />" .
+                        number_format(floatval($SELL2PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL2PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-2)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "14" ."<br />" . number_format(floatval($SELL14PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-14)),2) .                           
+                        "<br />" . "14" ."<br />" . 
+                        number_format(floatval($SELL14PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL14PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-14)),2) .                           
                         "</font>" . "</td>";
                         
                         echo "<td class=\"text-center\" bgcolor=\"#FF4136\">" . "<font color=\"#fff\">" .
-                        number_format(floatval($SELL1PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-1)),2) . "<br />" .
+                        number_format(floatval($SELL1PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL1PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-1)),2) . "<br />" .
                         "---------" .
-                        "<br />" . "13" ."<br />" . number_format(floatval($SELL13PER),2) . "<br />" . number_format(floatval(($MRPMARGIN-13)),2) .                           
+                        "<br />" . "13" ."<br />" . 
+                        number_format(floatval($SELL13PER),2) . "<br />" . 
+                        "<a href=\"./estimateActions.php?addRec=$SELL13PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .
+                        number_format(floatval(($MRPMARGIN-13)),2) .                           
                         "</font>" . "</td>";
                         //echo "<td>". $CATEGORY ."</td>";
                         echo "<td class=\"text-center\">". $STOCK ."</td>";
@@ -354,28 +471,28 @@
                     echo '</div>';   
                 $stmt->close();
             }
-    }
+        }
     
     function putEmptyRow()
-    {
-        echo '<div class="panel panel-default">';  
-        echo '<table class="table table-striped">';
-        echo '<thead>';
-        echo '<tr>';
-        echo "<th>BARCODE</th>";
-        echo "<th>REFERENCE</th>";
-        echo "<th>ITEM</th>";
-        echo "<th>PRICE</th>";
-        echo "<th>COST</th>";
-        echo "<th>CATEGORY</th>";
-        echo "<th>STOCK</th>";
-        echo "<th>TAX TYPE</th>";
-        echo '</tr>';
-        echo '</thead>';
-        echo '<tbody>';
-        echo "<tr><td class='bg-info text-center' colspan='8'></td></tr>";
-        echo '</tbody';
-        echo '</table>';
-        echo '</div>';  
-    }
+        {
+            echo '<div class="panel panel-default">';  
+            echo '<table class="table table-striped">';
+            echo '<thead>';
+            echo '<tr>';
+            echo "<th>BARCODE</th>";
+            echo "<th>REFERENCE</th>";
+            echo "<th>ITEM</th>";
+            echo "<th>PRICE</th>";
+            echo "<th>COST</th>";
+            echo "<th>CATEGORY</th>";
+            echo "<th>STOCK</th>";
+            echo "<th>TAX TYPE</th>";
+            echo '</tr>';
+            echo '</thead>';
+            echo '<tbody>';
+            echo "<tr><td class='bg-info text-center' colspan='8'></td></tr>";
+            echo '</tbody';
+            echo '</table>';
+            echo '</div>';  
+        }
 ?>

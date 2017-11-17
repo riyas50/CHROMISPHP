@@ -18,6 +18,27 @@
 <br />
 <br />
   <div class="container">
+
+      <div id="tableManager" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Country Name</h2>
+                    </div>
+
+                    <div class="modal-body">
+                        <input type="text" class="form-control" placeholder="Country Name..." id="countryName"><br>
+                        <textarea class="form-control" id="shortDesc" placeholder="Short Country Description"></textarea><br>
+                        <textarea class="form-control" id="longDesc" placeholder="Long Country Description"></textarea><br>
+                    </div>
+
+                    <div class="modal-footer">
+                        <input type="button" onclick="manageData('addNew')" value="Save" class="btn btn-success">
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <div class="panel table-bordered">
       <div class="panel-heading bg-success">
           <h4 style="color:red;">Products</h4>

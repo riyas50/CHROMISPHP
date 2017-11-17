@@ -27,7 +27,8 @@
                     echo "<th>ITEM</th>";
                     echo "<th>PRICE</th>";
                     echo "<th class=\"text-center\">QTY</th>";
-                    echo "<th class=\"text-center text-danger glyphicon glyphicon-remove\"></th>";
+                    //echo "<th class=\"text-center text-danger glyphicon glyphicon-remove\"></th>";
+                    echo "<th class=\"text-center\"><a href=\"./estimateActions.php?clear=All\"><span class=\"glyphicon glyphicon-remove text-danger \"></span></a></th>";
                     echo "<tbody>";
                     while($records->fetch())
                     {
@@ -45,7 +46,7 @@
                                 echo $QUANTITY;
                             echo "</td>";
                             echo "<td class=\"text-center\">";
-                                echo "<a href=\"./estimateremove.php?delrec=$CODE\"><span class=\"glyphicon glyphicon-remove text-danger \"></span></a>";
+                                echo "<a href=\"./estimateActions.php?delrec=$CODE\"><span class=\"glyphicon glyphicon-remove text-danger \"></span></a>";
                             echo "</td>";
                         echo "</tr>";
 
@@ -61,15 +62,12 @@
                 ?>
             </div>
         </div>
-  </body>
-<?php
-    //include('general.php');
-    putScripts();
-    //stickfooter();
-?>
 
-<!--
--->
+        <?php
+            //include('general.php');
+            putScripts();
+            //stickfooter();
+        ?>
 </form>
 </body>
 </html>

@@ -126,9 +126,6 @@ if (isset($_POST['Search']))
     putScripts();
     stickfooter();
 ?>
-
-<!--
--->
  
 </body>
 </html>
