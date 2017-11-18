@@ -329,8 +329,9 @@
                         echo "<td class=\"text-center\" bgcolor=\"#001f3f\">" . "<font color=\"#7fdbff\">" . 
                         number_format(floatval($SELL12PER),2) . "<br />" . 
                         "<a href=\"./estimateActions.php?addRec=$SELL12PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" .                        
+                        "<a href=\"#\" data-toggle=\"modal\" data-target=\"#distmodal\" data-quantity=\"1\" data-barcode=$CODE data-itemdesc=$NAME data-price=$SELL12PER><span class=\"badge\">select</span></a>" . "<br />" . 
                         number_format(floatval(($MRPMARGIN-12)),2) . "<br />" .
-                        "-----------" .
+                        "---------" .
                         "<br />" . "24" . "<br />" . 
                         number_format(floatval($SELL24PER),2) . "<br />" .
                         "<a href=\"./estimateActions.php?addRec=$SELL24PER&code=$CODE\"><span class=\"badge\">select</span></a>" . "<br />" . 

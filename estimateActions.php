@@ -50,4 +50,22 @@
                 //exit();
                 header('Location: marginsearch.php');
             }
+
+    if (isset($_GET['insertRec']) && isset($_GET['code']) && isset($_GET['qty']) )
+            {
+                $code = $_GET['code'];
+                $price = $_GET['insertRec'];
+                $qty = $_GET['qty'];
+                //echo $code . " " . $price;
+                //exit();
+                $conn = dbconn();
+                $addQuery = "INSERT INTO estimate (CODE,PRICESELL,QUANTITY) VALUES ($code,$price,$qty) 
+                ON DUPLICATE KEY UPDATE PRICESELL=$price,QUANTITY=$qty";
+                $result = mysqli_query($conn, $addQuery);
+                $conn->close();
+                $code="";
+                $price=0;
+                //exit();
+                header('Location: marginsearch.php');
+            }
     ?>
