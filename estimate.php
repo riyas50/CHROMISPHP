@@ -12,10 +12,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <?php
-                $conn = dbConn();
-                $Query = "SELECT e.CODE CODE,p.NAME NAME,e.PRICESELL PRICESELL,e.QUANTITY QUANTITY
+                    $conn = dbConn();
+                    $Query = "SELECT e.CODE CODE,p.NAME NAME,e.PRICESELL PRICESELL,e.QUANTITY QUANTITY
                             FROM estimate e
                             INNER JOIN products p on p.CODE = e.CODE";
+                
                 if($records  = $conn->prepare($Query))
                 {
                     $records->execute();
@@ -56,6 +57,19 @@
 
                     }
                     echo "</tbody>";
+                    echo "<tfoot>";
+                    echo "<tr>";
+                    echo  "<th></th>";
+                    echo  "<th></th>";
+                    echo  "<th></th>";
+                    echo  "<th></th>";
+                    echo  "<th>";
+                    //echo "<form action=\"./estimate.php\" id=\"printform\" name=\"printform\" method=\"post\">";
+                    echo "<a href=\"printestimate.php?command=print&redirect=estimate\" class=\"btn btn-success btn-block btn-md\" id=\"printestimate\" name=\"printestimate\">Print</a>";
+                    //echo "</form>";
+                    echo  "</th>";
+                    echo "</tr>";
+                    echo "</tfoot>";
                     echo "</table>";
                 }
 
@@ -66,7 +80,13 @@
                 ?>
             </div>
         </div>
+        <?php 
+            if (isset($_POST['printform']))
+                {
+                    echo "hit!";
 
+                }
+        ?>
         <?php
             //include('general.php');
             putScripts();
