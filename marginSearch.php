@@ -19,17 +19,19 @@
                             <h2 class="modal-title">Estimate</h2>
                         </div>
                         <div class="modal-body">
-                            <form method="post" action="./marginSearch.php">
+                            <form method="post" action="marginSearch.php" enctype="multipart/form-data">
                                 <!-- <input type="text" class="form-control" placeholder="example control..." id="example"><br/>  -->
                                 <input type="text" class="form-control" placeholder="" id="barcode" readonly="readonly"><br/> 
                                 <input type="text" class="form-control" placeholder="" id="itemdesc" readonly="readonly"><br/> 
                                 <input type="text" class="form-control" placeholder="" id="price" readonly="readonly"><br/> 
                                 <input type="text" class="form-control" placeholder="" id="qty" autofocus><br/> 
+                                <button type="submit" id="secretButton" style="float:left;" name="secretButton" />
                             </form>
                         </div>
                         <div class="modal-footer">
                             <!-- <input type="button" data-toggle="modal" data-target="#distmodal" class="btn btn-success" name="estSave" id="estSave" value="Save" > -->
                             <!-- <a href="estimate.php" id="estinsert" name="estinsert" class="btn btn-success" data-toggle="modal" data-target="#distmodal">Save</a> -->
+                            
                             <a href="estimate.php" id="estinsert" name="estinsert" class="btn btn-success">Save</a>
                             <a class="btn btn-danger" data-toggle="modal" data-target="#distmodal">Close</a>
                         </div>
@@ -154,15 +156,9 @@
                 $(".modal-body #barcode").val(barcode)
                 $(".modal-body #itemdesc").val(itemdesc)
                 $(".modal-body #price").val(price)
-                //$(".modal-body #qty").val( qty )
                 $("a[href='estimate.php']").attr('href', './estimateActions.php?insertRec=' + price + '&code=' + barcode + '&qty=0') // + qty)
-                //modal.find('.modal-body #').val(qty)
                 
             });
-
-/*             $("#qty").on("input", function() {
-                $("a[href='estimate.php']").attr('href', './estimateActions.php?insertRec=' + price + '&code=' + barcode + '&qty=' + this.value)
-              }) */
 
               $('#qty').change(function() {
                 var newurl = $('#qty').val()
@@ -170,6 +166,21 @@
                 newhref= newhref.replace("qty=0","qty="+newurl)
                 //alert(newhref)
                 $("#estinsert").attr("href",newhref)
+            });
+
+            $("#secretButton").hide()
+
+            $("#qty").keypress(function (e){
+                if(e.which == 13) {
+                    var newurl = $('#qty').val();
+                    var newhref = $("#estinsert").attr("href");
+                    newhref= newhref.replace("qty=0","qty="+newurl);
+                    $("#estinsert").attr("href",newhref)
+                    //sleep(2);
+                    //wait(10)
+                    $('#estinsert')[0].click();
+                }
+                
             });
 
         });      
