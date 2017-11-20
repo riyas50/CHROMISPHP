@@ -9,6 +9,7 @@
         putLinks();
     ?>
 
+
   </head>
   <body>
     <div class="container">
@@ -138,6 +139,7 @@
     ?>
     
     <script type="text/javascript">
+
         $(document).ready(function() {
             $("#addNew").on('click',function(){
                 $("#distmodal").modal('show');
@@ -187,6 +189,7 @@
 
 
     </script>
+
     <?php
         stickfooter();
     ?>
