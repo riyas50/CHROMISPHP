@@ -26,6 +26,7 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 
         if($records  = $conn->prepare($Query))
             {
+                $grandTotal = 0;
                 $records->execute();
                 $records->bind_result($CODE,$NAME,$PRICESELL,$QUANTITY);
 
@@ -40,7 +41,8 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
                 $printer -> text("Estimate\n");
                 $printer -> setJustification(Printer::JUSTIFY_LEFT);
                 $printer -> text(str_repeat("=",42) . "\n");
-                $printer -> text(str_pad("Qty",3) . " " . str_pad("Item Details",22)  . " " . str_pad("Price",7," ",STR_PAD_RIGHT) . " " . str_pad("Total",7," ",STR_PAD_RIGHT) . "\n");
+                $printer -> text(str_pad("Qty",3) . " " . str_pad("Item Details",22)  . " " . str_pad("Price",7," ",STR_PAD_RIGHT) . " ");
+                $printer -> text(str_pad("Total",7," ",STR_PAD_LEFT) . "\n");
                 $printer -> text(str_repeat("=",42) . "\n");
 
                 while($records->fetch())
@@ -48,16 +50,19 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
                     try 
                         {
                             
-
-
                             $barcode=$CODE;
                             $desc=$NAME;
-                            $price=number_format(floatval($PRICESELL),2);
+                            $price=number_format(floatval($PRICESELL),2,".","");
                             $qty=$QUANTITY;
-                            $total=number_format(floatval($PRICESELL * $qty),2);
+                            $total=number_format(floatval($PRICESELL * $qty),2,".","");
 
-                            $printer -> text(str_pad($qty,3) . " " . str_pad(trim(substr($desc,0,20)),22) . " " . str_pad($price,7," ",STR_PAD_RIGHT) . " " . str_pad($total,7," ",STR_PAD_RIGHT) . "\n");
+                            $printer -> text(str_pad($qty,3) . " " . str_pad(trim(substr($desc,0,20)),22) . " " . str_pad($price,7," ",STR_PAD_RIGHT) . " "); 
+                            $printer -> setJustification(Printer::JUSTIFY_RIGHT); //to print total
+                            $printer -> text(str_pad(number_format($total,2,".",""),7," ",STR_PAD_LEFT) . "\n");
+                            $printer -> setJustification(Printer::JUSTIFY_LEFT);
                             $printer -> text(str_pad($barcode,17," ",STR_PAD_LEFT) . "\n");
+
+                            $grandTotal = $grandTotal + ($total);
 
                         } 
                         catch (Exception $e) 
@@ -66,9 +71,18 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
                             }
                 }
 
+                $printer -> text(str_repeat("=",42) . "\n");
+                //$printer -> setJustification(Printer::JUSTIFY_RIGHT); //to print grand total
+                $printer -> text(str_pad(number_format($grandTotal,2,".",""),42," ",STR_PAD_LEFT) . "\n");
+                $printer -> setJustification(Printer::JUSTIFY_LEFT); //to print grand total
+                //$printer -> text($grandTotal . "\n");
+                $printer -> text(str_repeat("=",42) . "\n");
+
                 $printer -> cut();
                 /* Close printer */
                 $printer -> close();
+
+                $grandTotal = 0;
 
 
                 $records->close();
