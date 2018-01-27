@@ -10,7 +10,8 @@ function profitTillDate()
         $conn = dbConn();
 
         //$query = "SELECT PRODUCTS.REFERENCE,         PRODUCTS.NAME,         PRODUCTS.PRICEBUY,         PRODUCTS.PRICESELL,         SUM(TICKETLINES.UNITS) AS SOLD_UNITS,         SUM(TICKETLINES.UNITS * PRODUCTS.PRICEBUY) AS COST_VALUE,         SUM(TICKETLINES.UNITS * PRODUCTS.PRICESELL) AS EXPECTED_SALES_VALUE,         SUM(TICKETLINES.PRICE * TICKETLINES.UNITS) AS ACTUAL_SALES_VALUE,           SUM(TICKETLINES.UNITS * PRODUCTS.PRICESELL)         - SUM(TICKETLINES.UNITS * PRODUCTS.PRICEBUY)            AS EXPECTED_PROFIT,         SUM(TICKETLINES.PRICE * TICKETLINES.UNITS) - SUM(TICKETLINES.UNITS * PRODUCTS.PRICEBUY)            AS ACTUAL_PROFIT    FROM (TICKETLINES TICKETLINES         INNER JOIN RECEIPTS RECEIPTS             ON (TICKETLINES.TICKET = RECEIPTS.ID))         LEFT OUTER JOIN PRODUCTS PRODUCTS            ON (TICKETLINES.PRODUCT = PRODUCTS.ID)      GROUP BY TICKETLINES.PRODUCT      ORDER BY PRODUCTS.REFERENCE ASC";
-        $query = "SELECT PRODUCTS.REFERENCE,         PRODUCTS.NAME,         PRODUCTS.PRICEBUY,         PRODUCTS.PRICESELL,         SUM(TICKETLINES.UNITS) AS SOLD_UNITS,         SUM(TICKETLINES.UNITS * PRODUCTS.PRICEBUY) AS COST_VALUE,         SUM(TICKETLINES.UNITS * PRODUCTS.PRICESELL) AS EXPECTED_SALES_VALUE,         SUM(TICKETLINES.PRICE * TICKETLINES.UNITS) AS ACTUAL_SALES_VALUE,           SUM(TICKETLINES.UNITS * PRODUCTS.PRICESELL)         - SUM(TICKETLINES.UNITS * PRODUCTS.PRICEBUY)            AS EXPECTED_PROFIT,         SUM(TICKETLINES.PRICE * TICKETLINES.UNITS) - SUM(TICKETLINES.UNITS * PRODUCTS.PRICEBUY)            AS ACTUAL_PROFIT    FROM (TICKETLINES TICKETLINES         INNER JOIN RECEIPTS RECEIPTS             ON (TICKETLINES.TICKET = RECEIPTS.ID))         LEFT OUTER JOIN PRODUCTS PRODUCTS            ON (TICKETLINES.PRODUCT = PRODUCTS.ID)      GROUP BY TICKETLINES.PRODUCT      ORDER BY PRODUCTS.REFERENCE ASC";
+        $query = "SELECT PRODUCTS.REFERENCE,         PRODUCTS.NAME,         PRODUCTS.PRICEBUY,         PRODUCTS.PRICESELL,         SUM(TICKETLINES.UNITS) AS SOLD_UNITS,         SUM(TICKETLINES.UNITS * PRODUCTS.PRICEBUY) AS COST_VALUE,         SUM(TICKETLINES.UNITS * PRODUCTS.PRICESELL) AS EXPECTED_SALES_VALUE,         SUM(TICKETLINES.PRICE * TICKETLINES.UNITS) AS ACTUAL_SALES_VALUE,           SUM(TICKETLINES.UNITS * PRODUCTS.PRICESELL)         - SUM(TICKETLINES.UNITS * PRODUCTS.PRICEBUY)            AS EXPECTED_PROFIT,         SUM(TICKETLINES.PRICE * TICKETLINES.UNITS) - SUM(TICKETLINES.UNITS * PRODUCTS.PRICEBUY)            AS ACTUAL_PROFIT    FROM (TICKETLINES TICKETLINES         INNER JOIN RECEIPTS RECEIPTS             ON (TICKETLINES.TICKET = RECEIPTS.ID))         LEFT OUTER JOIN PRODUCTS PRODUCTS            ON (TICKETLINES.PRODUCT = PRODUCTS.ID)      GROUP BY TICKETLINES.PRODUCT      ORDER BY PRODUCTS.NAME ASC";
+        
 
         if ($stmt = $conn->prepare($query)) 
         {
@@ -101,7 +102,7 @@ function profitDateFilter($thisDate1,$thisDate2)
         if ($stmt = $conn->prepare($query)) 
         {
             $stmt->execute();
-            $stmt->bind_result($REFERENCE, $NAME, $TDATE, $TTIME, $PRICEBUY, $PRICESELL, $SOLD_UNITS, $COST_VALUE, $EXPECTED_SALES_VALUE, $ACTUAL_SALES_VALUE, $EXPECTED_PROFIT, $ACTUAL_PROFIT);
+            $stmt->bind_result($REFERENCE, $NAME, $TDATE, $PRICEBUY, $PRICESELL, $SOLD_UNITS, $COST_VALUE, $EXPECTED_SALES_VALUE, $ACTUAL_SALES_VALUE, $EXPECTED_PROFIT, $ACTUAL_PROFIT);
             
             $GRAND_TOTAL_EXPECTED_SALES=0;
             $GRAND_TOTAL_EXPECTED_PROFIT=0;
@@ -116,7 +117,7 @@ function profitDateFilter($thisDate1,$thisDate2)
                     echo "<td>$REFERENCE</td>";
                     echo "<td>$NAME</td>";
                     echo "<td>$TDATE</td>";
-                    echo "<td>$TTIME</td>";
+                    //echo "<td>$TTIME</td>";
                     echo "<td align=\"right\">" . number_format($PRICEBUY,2,'.','') . "</td>";
                     echo "<td align=\"right\">" . number_format($PRICESELL,2,'.','') . "</td>";
                     echo "<td align=\"center\">" . $SOLD_UNITS . "</td>";
@@ -154,7 +155,7 @@ function profitDateFilter($thisDate1,$thisDate2)
         echo "<td align=\"right\"></td>"; //$REFERENCE
         echo "<td align=\"right\"></td>"; //$NAME 
         echo "<td align=\"right\"></td>"; //$TDATE 
-        echo "<td align=\"right\"></td>"; //$TTIME 
+        //echo "<td align=\"right\"></td>"; //$TTIME 
         echo "<td align=\"right\"></td>"; //$PRICEBUY
         echo "<td align=\"right\"></td>"; //$PRICESELL
         echo "<td align=\"center\"></td>"; //$SOLD_UNITS
@@ -214,7 +215,7 @@ function prepareOutputTableDateHeader()
                 echo '<th align=\"left\">BARCODE</th>';
                 echo '<th align=\"left\">ITEM</th>';
                 echo '<th align=\"left\">DATE</th>';
-                echo '<th align=\"left\">TIME</th>';
+                //echo '<th align=\"left\">TIME</th>';
                 echo "<th align=\"right\">RPICE BUY</th>";
                 echo '<th align=\"right\">PRICE SELL</th>';
                 echo '<th align=\"center\">SOLD QTY</th>';

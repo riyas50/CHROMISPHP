@@ -40,7 +40,7 @@
     <div class="col-lg-4 text-right">
                     <a class="glyphicon glyphicon-home" style="font-size:30px;color:orange" href="/chromisphp/"></a> 
                     
-                    <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input1" data-link-format="yyyy/mm/dd">
+                    <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input1" data-link-format="dd/mm/yyyy">
                         <input class="form-control" size="16" type="text" value="" readonly>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -48,7 +48,7 @@
                       <input type="hidden" name="dtp_input1" id="dtp_input1" value="" />  
                 <!--</div>-->
                 <!---->
-                    <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy/mm/dd">
+                    <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="dd/mm/yyyy">
                         <input class="form-control" size="16" type="text" value="" readonly>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -64,11 +64,12 @@
 <br />
      <button type="submit" class="btn btn-success" id="btnReport" name="btnReport" >Run Report</button>
      <button type="submit" class="btn btn-warning" id="btnClear" name="btnClear" >Clear</button>
+    
     </div>      
 
     <br /> 
  </div>
-     
+   
     <div class="col-lg-4"></div>
  </div>
  </form>
@@ -88,10 +89,12 @@
                         if($date2 > $date1)
                             {
                                 //displayMessage('Date 1: ' . $date1 . '\n' . 'Date 2: ' . $date2);
+                                echo "<span class=\"label label-info\">Fiter Date: $date1 - $date2</span>";
                                 profitDateFilter($date1,$date2);
                             }
                         else 
                             {
+                                echo "<span class=\"label label-warning\">Invalid Filter</span>";
                                 displayMessage('Invalid date selection');                                                  
                             }
                     }
@@ -99,12 +102,14 @@
                     {
                         # code...
                         $date1 = date($_POST['dtp_input1']);                        
+                        echo "<span class=\"label label-info\">Fiter Date: $date1</span>";                        
                         //displayMessage('Date 2 empty!');
                         profitDateFilter($date1,'');
                     }
                 elseif ((empty($_POST['dtp_input1'])) && (!empty($_POST['dtp_input2']))) 
                     {
                         # code...
+                        echo "<span class=\"label label-warning\">Invalid Filter</span>";
                         displayMessage('Invalid date selection');  
                     }
                 else {
@@ -113,12 +118,14 @@
                     if((empty($_POST['chkAllSales'])))
                         {
                             //displayMessage($_POST['chkAllSales']);
+                            echo "<span class=\"label label-info\">No Filter Applied</span>";
                             profitTillDate();
 
                         }
                     if((!empty($_POST['chkAllSales'])))
                         {
                             //displayMessage($_POST['chkAllSales']);
+                            echo "<span class=\"label label-info\">Filter: Profit Till Date</span>";
                             profitDateFilter('','');
                         } 
                 }

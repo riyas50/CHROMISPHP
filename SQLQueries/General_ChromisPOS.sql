@@ -44,11 +44,15 @@ delete from stockcurrent where units>0;
 
 
 /*
+
 delete  from ticketlines;
 delete  from tickets;
 delete  from ticketsnum;
 delete  from ticketsnum_invoice;
 delete  from sharedtickets;
+delete from taxlines;
+delete from payments;
+delete from receipts;
 delete  from ticketsnum_payment;
 delete  from ticketsnum_refund;
 delete from stockdiary;
@@ -71,3 +75,14 @@ SELECT e.CODE,p.NAME,e.PRICESELL,e.QUANTITY
   FROM estimate e
   INNER JOIN products p on p.CODE = e.CODE
 */
+
+/*
+SELECT PRODUCTS.REFERENCE,         PRODUCTS.NAME,         PRODUCTS.PRICEBUY,         PRODUCTS.PRICESELL,         SUM(TICKETLINES.UNITS) AS SOLD_UNITS,         SUM(TICKETLINES.UNITS * PRODUCTS.PRICEBUY) AS COST_VALUE,         SUM(TICKETLINES.UNITS * PRODUCTS.PRICESELL) AS EXPECTED_SALES_VALUE,         SUM(TICKETLINES.PRICE * TICKETLINES.UNITS) AS ACTUAL_SALES_VALUE,           SUM(TICKETLINES.UNITS * PRODUCTS.PRICESELL)         - SUM(TICKETLINES.UNITS * PRODUCTS.PRICEBUY)            AS EXPECTED_PROFIT,         SUM(TICKETLINES.PRICE * TICKETLINES.UNITS) - SUM(TICKETLINES.UNITS * PRODUCTS.PRICEBUY)            AS ACTUAL_PROFIT    FROM (TICKETLINES TICKETLINES         INNER JOIN RECEIPTS RECEIPTS             ON (TICKETLINES.TICKET = RECEIPTS.ID))         LEFT OUTER JOIN PRODUCTS PRODUCTS            ON (TICKETLINES.PRODUCT = PRODUCTS.ID)      GROUP BY TICKETLINES.PRODUCT      ORDER BY PRODUCTS.REFERENCE ASC;
+call SALESPROFITDATE(NULL,NULL); 
+  
+ */
+/*
+select * from ticketlines;
+select * from stockdiary;
+select * from receipts;
+  */
