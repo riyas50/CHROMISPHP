@@ -75,8 +75,9 @@
           <h4 style="color:red;">Reports</h4>
       </div>
       <div class="panel-body">
-        <a class="btn btn-info" href="/chromisphp/Report_ProductSalesProfit.php">Product Sales: Profit Report</a>
-        <a class="btn btn-warning" href="#">No Reports</a>
+        <a class="btn btn-info" href="/chromisphp/Report_ProductSalesProfit.php">Product Sales: Itemwise Profit Report</a>
+        <a class="btn btn-warning" href="/chromisphp/Report_ProductSalesProfitMonthly.php">Product Sales: Monthly Profit Report</a>
+    
   </div>
   </div>
 </div>

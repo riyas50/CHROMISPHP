@@ -1,0 +1,4 @@
+alt + f12 (for cmd)
+git add .
+git commit
+git push

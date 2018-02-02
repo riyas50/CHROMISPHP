@@ -69,6 +69,15 @@ function putDatePickerScript()
 		minView: 2,
 		forceParse: 0
     });
+	$('.form_monthly').datetimepicker({
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 3,
+		minView: 3,
+		forceParse: 0
+    });
 	$('.form_time').datetimepicker({
         //language:  'fr',
         weekStart: 1,
