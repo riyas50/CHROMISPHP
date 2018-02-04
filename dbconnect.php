@@ -3,7 +3,8 @@ function dbConn() {
         $servername = "localhost";
         $username = "root";
         $password = 'access';
-        $dbname = "chromispos";
+        //$dbname = "chromispos";
+        $dbname = "grandchromis";
 
         // Create connection
         $conn = mysqli_connect($servername, $username, $password, $dbname);

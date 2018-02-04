@@ -25,7 +25,7 @@ select * from ticketsnum_invoice;
 select * from sharedtickets;
 select * from ticketsnum_payment;
 select * from ticketsnum_refund;
--- select * from stockdiary;
+select * from stockdiary;
 /*
 select count(units) from stockcurrent   
 */
@@ -80,9 +80,20 @@ SELECT e.CODE,p.NAME,e.PRICESELL,e.QUANTITY
 SELECT PRODUCTS.REFERENCE,         PRODUCTS.NAME,         PRODUCTS.PRICEBUY,         PRODUCTS.PRICESELL,         SUM(TICKETLINES.UNITS) AS SOLD_UNITS,         SUM(TICKETLINES.UNITS * PRODUCTS.PRICEBUY) AS COST_VALUE,         SUM(TICKETLINES.UNITS * PRODUCTS.PRICESELL) AS EXPECTED_SALES_VALUE,         SUM(TICKETLINES.PRICE * TICKETLINES.UNITS) AS ACTUAL_SALES_VALUE,           SUM(TICKETLINES.UNITS * PRODUCTS.PRICESELL)         - SUM(TICKETLINES.UNITS * PRODUCTS.PRICEBUY)            AS EXPECTED_PROFIT,         SUM(TICKETLINES.PRICE * TICKETLINES.UNITS) - SUM(TICKETLINES.UNITS * PRODUCTS.PRICEBUY)            AS ACTUAL_PROFIT    FROM (TICKETLINES TICKETLINES         INNER JOIN RECEIPTS RECEIPTS             ON (TICKETLINES.TICKET = RECEIPTS.ID))         LEFT OUTER JOIN PRODUCTS PRODUCTS            ON (TICKETLINES.PRODUCT = PRODUCTS.ID)      GROUP BY TICKETLINES.PRODUCT      ORDER BY PRODUCTS.REFERENCE ASC;
 call SALESPROFITDATE(NULL,NULL); 
   
- */
-/*
-select * from ticketlines;
-select * from stockdiary;
-select * from receipts;
+ /*
+    cHROMIS TICKETTYPES IN TICKETS 
+    public static final int RECEIPT_NORMAL = 0;
+    public static final int RECEIPT_REFUND = 1;
+    public static final int RECEIPT_PAYMENT = 2;
+    public static final int RECEIPT_NOSALE = 3;
   */
+/*
+select * from tickets where tickets.id in (select receipts.id from receipts where DATE_FORMAT(RECEIPTS.DATENEW, "%d/%m/%Y")='01/02/2018') order by tickets.ID;
+select * from ticketlines where ticketlines.ticket in (select receipts.id from receipts where DATE_FORMAT(RECEIPTS.DATENEW, "%d/%m/%Y")='01/02/2018') 
+  and ticketlines.product='8709da74-5e71-4d8d-b91b-0cf299103222' order by ticketlines.ticket;
+select * from stockdiary where STOCKDIARY.PRODUCT='8709da74-5e71-4d8d-b91b-0cf299103222' AND DATE_FORMAT(STOCKDIARY.DATENEW, "%d/%m/%Y")='01/02/2018';
+select * from receipts where DATE_FORMAT(RECEIPTS.DATENEW, "%d/%m/%Y")='01/02/2018' order by receipts.id;
+select * from products where code='500';
+  */
+
+  -- CALL UPLOADPROD('500' ,'500','Photostat',1.50,0.35,'Services','000',1);
