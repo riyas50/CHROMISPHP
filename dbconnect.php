@@ -2,7 +2,7 @@
 function dbConn() {
         $servername = "localhost";
         $username = "root";
-        $password = 'access';
+        $password = "access";
         //$dbname = "chromispos";
         $dbname = "grandchromis";
 

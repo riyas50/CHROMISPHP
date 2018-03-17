@@ -1,4 +1,5 @@
-use chromispos;
+/*
+-- use chromispos;
 -- mySQL or MariaDB Queries for Chromis POS analysis
 select * from products 
 -- where REFERENCE='1008'
@@ -26,6 +27,7 @@ select * from sharedtickets;
 select * from ticketsnum_payment;
 select * from ticketsnum_refund;
 select * from stockdiary;
+*/
 /*
 select count(units) from stockcurrent   
 */
@@ -97,3 +99,26 @@ select * from products where code='500';
   */
 
   -- CALL UPLOADPROD('500' ,'500','Photostat',1.50,0.35,'Services','000',1);
+
+  -- For Customer wise Invoice Report
+  -- /*
+  -- TICKETTYPE = 0 //NORMAL TICKET
+    select DISTINCT(ID),CUSTOMER,TICKETID from tickets where TICKETTYPE = 0 and CUSTOMER IS NOT NULL ORDER BY TICKETID ASC;
+      select * from tickets where TICKETTYPE = 0 AND CUSTOMER = "9069231f-b540-4bca-8875-73b07e711708" ORDER BY TICKETID ASC;
+        select * from ticketlines where TICKET = "305329b2-14fe-4f4f-a85e-4d0f73ebd002";
+          select * from customers where ID = "9069231f-b540-4bca-8875-73b07e711708";
+            select * from payments   ORDER BY TOTAL DESC; -- where PAYMENT = "debt" WHERE TOTAL=1020
+              select * from receipts;
+
+  select distinct(TICKETID),C.NAME,SUM(TL.UNITS * TL.PRICE) INVAMOUNT,R.DATENEW INVDATE,P.PAYMENT PAYSTATUS 
+    from tickets T
+    INNER JOIN customers C on C.ID = T.CUSTOMER -- AND C.ID="9069231f-b540-4bca-8875-73b07e711708"
+    INNER JOIN ticketlines TL on TL.TICKET = t.ID -- AND TL.TICKET = "305329b2-14fe-4f4f-a85e-4d0f73ebd002"
+    INNER JOIN receipts R on R.ID = TL.TICKET
+    INNER JOIN payments P ON P.RECEIPT = T.ID
+    where T.TICKETTYPE = 0
+    GROUP BY T.TICKETID
+    ORDER BY t.TICKETID;
+
+    -- select * from view_allcustomers;
+  -- */
