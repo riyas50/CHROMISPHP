@@ -110,15 +110,25 @@ select * from products where code='500';
             select * from payments   ORDER BY TOTAL DESC; -- where PAYMENT = "debt" WHERE TOTAL=1020
               select * from receipts;
 
-  select distinct(TICKETID),C.NAME,SUM(TL.UNITS * TL.PRICE) INVAMOUNT,R.DATENEW INVDATE,P.PAYMENT PAYSTATUS 
-    from tickets T
-    INNER JOIN customers C on C.ID = T.CUSTOMER -- AND C.ID="9069231f-b540-4bca-8875-73b07e711708"
-    INNER JOIN ticketlines TL on TL.TICKET = t.ID -- AND TL.TICKET = "305329b2-14fe-4f4f-a85e-4d0f73ebd002"
-    INNER JOIN receipts R on R.ID = TL.TICKET
-    INNER JOIN payments P ON P.RECEIPT = T.ID
-    where T.TICKETTYPE = 0
-    GROUP BY T.TICKETID
-    ORDER BY t.TICKETID;
+--   select distinct(TICKETID),C.NAME,SUM(TL.UNITS * TL.PRICE) INVAMOUNT,R.DATENEW INVDATE,P.PAYMENT PAYSTATUS 
+--     from tickets T
+--     INNER JOIN customers C on C.ID = T.CUSTOMER -- AND C.ID="9069231f-b540-4bca-8875-73b07e711708"
+--     INNER JOIN ticketlines TL on TL.TICKET = t.ID -- AND TL.TICKET = "305329b2-14fe-4f4f-a85e-4d0f73ebd002"
+--     INNER JOIN receipts R on R.ID = TL.TICKET
+--     INNER JOIN payments P ON P.RECEIPT = T.ID
+--     where T.TICKETTYPE = 0
+--     GROUP BY T.TICKETID
+--     ORDER BY t.TICKETID;
 
     -- select * from view_allcustomers;
+    --  select * from view_all_invoices;
   -- */
+
+select T.TICKETID,P.NAME PRODUCT,TL.LINE LINEITEM, TL.UNITS QTY, TL.PRICE UNITPRICE, (TL.UNITS * TL.PRICE) TOTAL
+  from tickets T
+  INNER JOIN ticketlines TL on TL.TICKET = T.ID
+  INNER JOIN products P on P.ID = TL.PRODUCT  
+  WHERE T.TICKETID = 948
+  ;
+
+select * from view_all_ticketlines WHERE ticketid=948 ORDER BY lineitem ASC;

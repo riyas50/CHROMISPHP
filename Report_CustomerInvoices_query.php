@@ -10,9 +10,9 @@
             echo '<tr>';
             echo '<th>INVOICE</th>';
             echo '<th>CUSTOMER</th>';
-            echo '<th>INVOICE AMOUNT</th>';
-            echo '<th>INVOICE DATE</th>';
-            echo '<th>PAY METHOD</th>';
+            echo '<th class="text-center">INVOICE AMOUNT</th>';
+            echo '<th class="text-center">INVOICE DATE</th>';
+            echo '<th class="text-center">PAY METHOD</th>';
             echo '</tr>';
             echo '</thead>';
 
@@ -29,11 +29,11 @@
             while ($stmt->fetch()) {
                 //printf("%s, %s, %s, %s, %s, %s, %s, %s\n", $CODE, $REFERENCE, $NAME, $PRICESELL, $PRICEBUY, $NAME1, $UNITS, $NAME3);
                         echo '<tbody>';
-                        echo "<tr><td>". $TICKETID ."</td>";
+                        echo "<tr><td><a href=\"javascript:void(0);\" data-href=\"ticketdetails.php?ticketid=$TICKETID\" data-title=\"$TICKETID\" class=\"openTicket\">$TICKETID</a></td>";
                         echo "<td>". $NAME ."</td>";
-                        echo "<td align=\"left\">". number_format($INVAMOUNT,2,'.','') ."</td>";
-                        echo "<td>". $INVDATE ."</td>";
-                        echo "<td>". $PAYMETHOD ."</td>";
+                        echo "<td class=\"text-center\">". number_format($INVAMOUNT,2,'.','') ."</td>";
+                        echo "<td class=\"text-center\">". $INVDATE ."</td>";
+                        echo "<td class=\"text-center\">". $PAYMETHOD ."</td>";
                         echo "</tr>";
                         echo '</tbody';
                         $GRAND_TOTAL+=$INVAMOUNT;
@@ -67,9 +67,9 @@ function filterRecords($CUSTNAME,$INVNO)
             echo '<tr>';
             echo '<th>INVOICE</th>';
             echo '<th>CUSTOMER</th>';
-            echo '<th>INVOICE AMOUNT</th>';
-            echo '<th>INVOICE DATE</th>';
-            echo '<th>PAY METHOD</th>';
+            echo '<th class="text-center">INVOICE AMOUNT</th>';
+            echo '<th class="text-center">INVOICE DATE</th>';
+            echo '<th class="text-center">PAY METHOD</th>';
             echo '</tr>';
             echo '</thead>';
 
@@ -90,11 +90,11 @@ function filterRecords($CUSTNAME,$INVNO)
                     //printf("%s, %s, %s, %s, %s, %s, %s, %s\n", $CODE, $REFERENCE, $NAME, $PRICESELL, $PRICEBUY, $NAME1, $UNITS, $NAME3);
                     $noRecord = true;
                     echo '<tbody>';
-                    echo "<tr><td><a href=\"#\">". $TICKETID ."</td>";
+                    echo "<tr><td><a href=\"javascript:void(0);\" data-href=\"ticketdetails.php?ticketid=$TICKETID\" data-title=\"$TICKETID\" class=\"openTicket\">$TICKETID</a></td>";
                     echo "<td>". $NAME ."</td>";
-                    echo "<td align=\"left\">". number_format($INVAMOUNT,2,'.','') ."</td>";
-                    echo "<td>". $INVDATE ."</td>";
-                    echo "<td>". $PAYMETHOD ."</td>";
+                    echo "<td class=\"text-center\">". number_format($INVAMOUNT,2,'.','') ."</td>";
+                    echo "<td class=\"text-center\">". $INVDATE ."</td>";
+                    echo "<td class=\"text-center\">". $PAYMETHOD ."</td>";
                     echo "</tr>";
                     echo '</tbody';
                     $GRAND_TOTAL+=$INVAMOUNT;
@@ -104,7 +104,7 @@ function filterRecords($CUSTNAME,$INVNO)
                 echo "<tr><td></td>";
                 echo "<td></td>";
                 //echo "<td align=\"right\" bgcolor=\"#32cb00\"><font color=\"white\"><b>$GRAND_TOTAL_COST</b></font></td>";
-                echo "<td align=\"right\" bgcolor=\"#32cb00\"><font color=\"white\"><b>". number_format($GRAND_TOTAL,2,'.','') ."</b></font></td>";
+                echo "<td  class=\"text-center\" bgcolor=\"#32cb00\"><font color=\"white\"><b>". number_format($GRAND_TOTAL,2,'.','') ."</b></font></td>";
                 echo "<td></td>";
                 echo "<td></td>";
                 echo "</tr>";
