@@ -29,7 +29,7 @@
             while ($stmt->fetch()) {
                 //printf("%s, %s, %s, %s, %s, %s, %s, %s\n", $CODE, $REFERENCE, $NAME, $PRICESELL, $PRICEBUY, $NAME1, $UNITS, $NAME3);
                         echo '<tbody>';
-                        echo "<tr><td><a href=\"javascript:void(0);\" data-href=\"ticketdetails.php?ticketid=$TICKETID\" data-title=\"$TICKETID\" class=\"openTicket\">$TICKETID</a></td>";
+                        echo "<tr><td><a href=\"javascript:void(0);\" data-href=\"ticketdetails.php?ticketid=$TICKETID\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Click for INV#$TICKETID details\" data-title=\"$TICKETID\" class=\"openTicket\">$TICKETID</a></td>";
                         echo "<td>". $NAME ."</td>";
                         echo "<td class=\"text-center\">". number_format($INVAMOUNT,2,'.','') ."</td>";
                         echo "<td class=\"text-center\">". $INVDATE ."</td>";
@@ -90,7 +90,7 @@ function filterRecords($CUSTNAME,$INVNO)
                     //printf("%s, %s, %s, %s, %s, %s, %s, %s\n", $CODE, $REFERENCE, $NAME, $PRICESELL, $PRICEBUY, $NAME1, $UNITS, $NAME3);
                     $noRecord = true;
                     echo '<tbody>';
-                    echo "<tr><td><a href=\"javascript:void(0);\" data-href=\"ticketdetails.php?ticketid=$TICKETID\" data-title=\"$TICKETID\" class=\"openTicket\">$TICKETID</a></td>";
+                    echo "<tr><td><a href=\"javascript:void(0);\" data-href=\"ticketdetails.php?ticketid=$TICKETID\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Click for INV#$TICKETID details\" data-title=\"$TICKETID\" class=\"openTicket\">$TICKETID</a></td>";
                     echo "<td>". $NAME ."</td>";
                     echo "<td class=\"text-center\">". number_format($INVAMOUNT,2,'.','') ."</td>";
                     echo "<td class=\"text-center\">". $INVDATE ."</td>";
