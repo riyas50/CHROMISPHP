@@ -63,12 +63,9 @@
   
   
     <?php
-<<<<<<< HEAD
-
-=======
-    include('dbconnect.php');
+    //include('dbconnect.php');
     
-        session_start();
+/*         session_start();
         if( strcasecmp($_SERVER['REQUEST_METHOD'],"POST") === 0) {
             $_SESSION['postdata'] = $_POST;
             header("Location: ".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']);
@@ -77,8 +74,7 @@
         if( isset($_SESSION['postdata'])) {
             $_POST = $_SESSION['postdata'];
             unset($_SESSION['postdata']);
-        }
->>>>>>> f05cea53172ad62ae8a169104e71f870e68af1f9
+        } */
 
 
     refreshRecords();
