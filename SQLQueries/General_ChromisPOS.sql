@@ -103,12 +103,13 @@ select * from products where code='500';
   -- For Customer wise Invoice Report
   -- /*
   -- TICKETTYPE = 0 //NORMAL TICKET
-    select DISTINCT(ID),CUSTOMER,TICKETID from tickets where TICKETTYPE = 0 and CUSTOMER IS NOT NULL ORDER BY TICKETID ASC;
-      select * from tickets where TICKETTYPE = 0 AND CUSTOMER = "9069231f-b540-4bca-8875-73b07e711708" ORDER BY TICKETID ASC;
-        select * from ticketlines where TICKET = "305329b2-14fe-4f4f-a85e-4d0f73ebd002";
-          select * from customers where ID = "9069231f-b540-4bca-8875-73b07e711708";
-            select * from payments   ORDER BY TOTAL DESC; -- where PAYMENT = "debt" WHERE TOTAL=1020
-              select * from receipts;
+
+--     select DISTINCT(ID),CUSTOMER,TICKETID from tickets where TICKETTYPE = 0 and CUSTOMER IS NOT NULL ORDER BY TICKETID ASC;
+--       select * from tickets where TICKETTYPE = 0 AND CUSTOMER = "9069231f-b540-4bca-8875-73b07e711708" ORDER BY TICKETID ASC;
+--         select * from ticketlines where TICKET = "305329b2-14fe-4f4f-a85e-4d0f73ebd002";
+--           select * from customers where ID = "9069231f-b540-4bca-8875-73b07e711708";
+--             select * from payments   ORDER BY TOTAL DESC; -- where PAYMENT = "debt" WHERE TOTAL=1020
+--               select * from receipts;
 
 --   select distinct(TICKETID),C.NAME,SUM(TL.UNITS * TL.PRICE) INVAMOUNT,R.DATENEW INVDATE,P.PAYMENT PAYSTATUS 
 --     from tickets T
@@ -123,12 +124,20 @@ select * from products where code='500';
     -- select * from view_allcustomers;
     --  select * from view_all_invoices;
   -- */
+-- 
+-- select T.TICKETID,P.NAME PRODUCT,TL.LINE LINEITEM, TL.UNITS QTY, TL.PRICE UNITPRICE, (TL.UNITS * TL.PRICE) TOTAL
+--   from tickets T
+--   INNER JOIN ticketlines TL on TL.TICKET = T.ID
+--   INNER JOIN products P on P.ID = TL.PRODUCT  
+--   WHERE T.TICKETID = 948
+--   ;
+-- 
+-- select * from view_all_ticketlines WHERE ticketid=948 ORDER BY lineitem ASC;
 
-select T.TICKETID,P.NAME PRODUCT,TL.LINE LINEITEM, TL.UNITS QTY, TL.PRICE UNITPRICE, (TL.UNITS * TL.PRICE) TOTAL
-  from tickets T
-  INNER JOIN ticketlines TL on TL.TICKET = T.ID
-  INNER JOIN products P on P.ID = TL.PRODUCT  
-  WHERE T.TICKETID = 948
-  ;
+  select * from view_allcustomers; --where Name LIKE '%ak%';
+  select * from view_all_ticketlines;
+  select * from view_all_invoices;
+  select * from view_all_products; --where id like 'c72a5acb-5f17-11e7-80aa-fc15b4ea8c2d';
+  select * from view_customer_item_search where product like "%pig%";
+*/
 
-select * from view_all_ticketlines WHERE ticketid=948 ORDER BY lineitem ASC;

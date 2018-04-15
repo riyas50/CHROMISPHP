@@ -80,6 +80,7 @@
         <br />
         <br />
         <a class="btn btn-success" href="/chromisphp/Report_CustomerInvoices.php">Customer Invoices</a>
+        <a class="btn btn-danger" href="/chromisphp/Report_CustomerItems.php">Customer Items</a>
   </div>
   </div>
 </div>
