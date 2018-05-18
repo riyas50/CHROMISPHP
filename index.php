@@ -55,6 +55,9 @@
                     <li><a href="./Report_ProductSalesProfitMonthly.php">Monthly Profit</a></li>
                     <li><a href="./Report_CustomerInvoices.php">Customer Invoices</a></li>
                     <li><a href="./Report_CustomerItems.php">Customer Items</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="./Report_CashReceipts.php">Cash Receipts Search</a></li>
+                    <li><a href="./Report_CashReceiptsItems.php">Cash Receipts Product Search</a></li>
                 </ul>
             </li>
         </ul>
@@ -139,6 +142,10 @@
         <br />
         <a class="btn btn-success" href="/chromisphp/Report_CustomerInvoices.php">Customer Invoices</a>
         <a class="btn btn-danger" href="/chromisphp/Report_CustomerItems.php">Customer Items</a>
+        <br />
+        <br />
+        <a class="btn btn-success" href="./Report_CashReceipts.php">Cash Receipts Search</a>
+        <a class="btn btn-danger" href="./Report_CashReceiptsItems.php">Cash Receipts Product Search</a>
   </div>
   </div>
 </div>
