@@ -139,7 +139,23 @@ select * from products where code='500';
   select * from view_all_invoices;
   select * from view_all_products; --where id like 'c72a5acb-5f17-11e7-80aa-fc15b4ea8c2d';
   select * from view_customer_item_search where product like "%pig%";
-  select * from grandchromis.view_cash_receipt_item_search
-  select * from grandchromis.view_all_cash_customers
+  select * from grandchromis.view_cash_receipt_item_search;
+  select * from grandchromis.view_all_cash_customers;
+
+  select sum(invamountab),invdateab from view_yearly_sales_all group by invdateab;
+
+  select sum(invamountab),invdateab from view_yearly_sales_all_cash group by invdateab order by invdateab;
+
+  select sum(invamountab) cSales,invdateab sYear from view_yearly_sales_all_customers group by invdateab order by invdateab;
+
+  select * from view_monthly_sales_all_customers;
+
+  select * from view_monthly_sales_all_cash;
+ 
+  select * from view_current_month_cash_sales;
+
+  select * from view_current_month_cust_sales;
+
+  select * from view_monthly_sales_all group by date_format(invdate,'%Y-%M') ;
 */
 
