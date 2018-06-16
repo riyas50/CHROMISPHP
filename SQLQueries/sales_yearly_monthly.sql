@@ -21,5 +21,9 @@ select SUM(INVAMOUNTAB) INVAMOUNT,DATE_FORMAT(INVDATEAB,'%M-%Y') INVDATE
 WHERE MONTH(INVDATEAB) = 8 -- MONTH(now())
 GROUP BY YEAR(INVDATEAB),MONTH(INVDATEAB);
 
--- current month cash sales last year
+-- current month customer sales yearly
+  select SUM(INVAMOUNTAB) INVAMOUNT,DATE_FORMAT(INVDATEAB,'%M-%Y') INVDATE 
+  from view_monthly_sales_all_customers
+  WHERE MONTH(INVDATEAB) = 2 -- MONTH(now())
+GROUP BY YEAR(INVDATEAB),MONTH(INVDATEAB);
 

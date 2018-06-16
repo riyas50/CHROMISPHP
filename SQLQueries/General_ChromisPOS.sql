@@ -142,6 +142,8 @@ select * from products where code='500';
   select * from grandchromis.view_cash_receipt_item_search;
   select * from grandchromis.view_all_cash_customers;
 
+  select * from tilldateprofititemwise;
+
   select sum(invamountab),invdateab from view_yearly_sales_all group by invdateab;
 
   select sum(invamountab),invdateab from view_yearly_sales_all_cash group by invdateab order by invdateab;
@@ -157,5 +159,7 @@ select * from products where code='500';
   select * from view_current_month_cust_sales;
 
   select * from view_monthly_sales_all group by date_format(invdate,'%Y-%M') ;
+
+  select * from view_yearly_total_sales;
 */
 

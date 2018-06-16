@@ -77,32 +77,96 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
-            <canvas id="chromisChart1" width="150" height="150"></canvas>
+            <canvas id="YearlyTotalSalesChart" width="100" height="100"></canvas>
+        </div>    
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
+            <canvas id="YearlyCashSalesChart" width="150" height="150"></canvas>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
-            <canvas id="chromisChart2" width="150" height="150"></canvas>
+            <canvas id="YearlyCustSalesChart" width="150" height="150"></canvas>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
-            <canvas id="chromisChart3" width="150" height="150"></canvas>
+            <canvas id="CurrMonthCashSalesChart" width="150" height="150"></canvas>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
-            <canvas id="chromisChart4" width="100" height="100"></canvas>
+            <canvas id="CurrMonthCustSalesChart" width="100" height="100"></canvas>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
-            <canvas id="chromisChart5" width="100" height="100"></canvas>5
-        </div>
-        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
-            <canvas id="chromisChart6" width="100" height="100"></canvas>6
+            <canvas id="TotalYearlyProfitChart" width="100" height="100"></canvas>
         </div>
     </div>
 </div> <!-- container -->
+
+    <?php //Yearly Total Sales
+        TotalYearlySales();                                         
+    ?>
+    
+    <script>
+        var ctx = document.getElementById('YearlyTotalSalesChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'bar',
+            // The data for our dataset
+            data: {
+                labels: <?php echo json_encode($outputYears);?>,
+                datasets: [{
+                    label: "Yearly Total Sales",
+                    backgroundColor: 'rgb(255,23,68)',
+                    borderColor: 'rgb(255,23,68)',
+                    data: <?php echo json_encode($outputInvAmount);?>,
+                }]
+            },
+            // Configuration options go here
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+</script>
+
+    <?php //Yearly Total Sales
+        TotalYearlyProfit();                                         
+    ?>
+    
+    <script>
+        var ctx = document.getElementById('TotalYearlyProfitChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'bar',
+            // The data for our dataset
+            data: {
+                labels: <?php echo json_encode($outputYears);?>,
+                datasets: [{
+                    label: "Yearly Total Profit",
+                    backgroundColor: 'rgb(118,255,3)',
+                    borderColor: 'rgb(118,255,3)',
+                    data: <?php echo json_encode($outputInvAmount);?>,
+                }]
+            },
+            // Configuration options go here
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+</script>
 
     <?php //Yearly Sales Cash
         YearlySalesCash();                                         
     ?>
     
     <script>
-        var ctx = document.getElementById('chromisChart1').getContext('2d');
+        var ctx = document.getElementById('YearlyCashSalesChart').getContext('2d');
         var chart = new Chart(ctx, {
             // The type of chart we want to create
             type: 'bar',
@@ -117,7 +181,15 @@
                 }]
             },
             // Configuration options go here
-            options: {}
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
         });
 </script>
 
@@ -126,7 +198,7 @@
     ?>
 
     <script>
-        var ctx = document.getElementById('chromisChart2').getContext('2d');
+        var ctx = document.getElementById('YearlyCustSalesChart').getContext('2d');
         var chart = new Chart(ctx, {
             // The type of chart we want to create
             type: 'bar',
@@ -135,22 +207,31 @@
                 labels: <?php echo json_encode($outputYears);?>,
                 datasets: [{
                     label: "Yearly Customer Sales",
-                    backgroundColor: 'rgb(118,255,3)',
-                    borderColor: 'rgb(118,255,3)',
+                    backgroundColor: 'rgb(213,0,249)',
+                    borderColor: 'rgb(213,0,249)',
                     data: <?php echo json_encode($outputInvAmount);?>,
                 }]
             },
             // Configuration options go here
-            options: {}
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }                
+            }
         });
 </script>
 
-    <?php //Yearly Sales Customers
+    <?php   //current month cash Sales 
+            //previous years vs current year
         CurrentMonthCashSales();                                         
     ?>
 
     <script>
-        var ctx = document.getElementById('chromisChart3').getContext('2d');
+        var ctx = document.getElementById('CurrMonthCashSalesChart').getContext('2d');
         var chart = new Chart(ctx, {
             // The type of chart we want to create
             type: 'bar',
@@ -158,22 +239,31 @@
             data: {
                 labels: <?php echo json_encode($outputYears);?>,
                 datasets: [{
-                    label: "Current Month Cash Sales",
+                    label: "This Month Cash Sales",
                     backgroundColor: 'rgb(21,101,192)',
                     borderColor: 'rgb(21,101,192)',
                     data: <?php echo json_encode($outputInvAmount);?>,
                 }]
             },
             // Configuration options go here
-            options: {}
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }                
+            }
         });
 </script>
-    <?php //Yearly Sales Customers
+    <?php   //Current month sales customers 
+            //Previous Years vs current year
         CurrentMonthCustSales();                                         
     ?>
 
     <script>
-        var ctx = document.getElementById('chromisChart4').getContext('2d');
+        var ctx = document.getElementById('CurrMonthCustSalesChart').getContext('2d');
         var chart = new Chart(ctx, {
             // The type of chart we want to create
             type: 'bar',
@@ -181,14 +271,22 @@
             data: {
                 labels: <?php echo json_encode($outputYears);?>,
                 datasets: [{
-                    label: "Current Month Customer Sales",
+                    label: "This Month Cust Sales",
                     backgroundColor: 'rgb(245,0,87)',
                     borderColor: 'rgb(245,0,87)',
                     data: <?php echo json_encode($outputInvAmount);?>,
                 }]
             },
             // Configuration options go here
-            options: {}
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }                
+            }
         });
 </script>
 
