@@ -1,4 +1,5 @@
 <?php
+        ini_set('max_execution_time', 300);
         include('dbconnect.php');
 
         $qYearlyCashSales = "select sum(invamountab) cSales,invdateab sYear from view_yearly_sales_all_cash group by invdateab order by invdateab;";
@@ -98,7 +99,7 @@
 
             if ($stmt = $con->prepare($GLOBALS['qCurMonCashSales'])) {
                 $stmt->execute();
-                $stmt->bind_result($cSales, $sMothYear);
+                $stmt->bind_result($cSales, $sMonthYear);
                 
                 while ($stmt->fetch()) {
                     $GLOBALS['outputInvAmount'][] = array($cSales);
@@ -116,7 +117,7 @@
 
             if ($stmt = $con->prepare($GLOBALS['qCurMonCustSales'])) {
                 $stmt->execute();
-                $stmt->bind_result($cSales, $sMothYear);
+                $stmt->bind_result($cSales, $sMonthYear);
                 
                 while ($stmt->fetch()) {
                     $GLOBALS['outputInvAmount'][] = array($cSales);
