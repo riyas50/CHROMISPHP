@@ -64,7 +64,7 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analytics <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="./dashboard.php">Dashboard</a></li>
+                    <li><a href="./dashboard.php" target="_blank">Dashboard</a></li>
                     <li><a href="#">Reserved</a></li>
                     <li><a href="#">Reserved</a></li>
                     <li><a href="#">Reserved</a></li>
