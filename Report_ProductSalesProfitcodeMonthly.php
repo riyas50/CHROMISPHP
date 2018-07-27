@@ -46,6 +46,19 @@ function profitTillDate()
                         {
                             echo "<td align=\"right\">" . number_format($ACTUAL_PROFIT,2,'.','') . "</td>";
                         }
+
+                        $MARGIN_RATIO = (($ACTUAL_PROFIT / $ACTUAL_SALES_VALUE) * 100); // % OF MARGIN CALCULATION
+
+                        if ($MARGIN_RATIO<0)
+                            {
+                                echo "<td align=\"right\" bgcolor=\"#f4511e\"><text class=\"text-danger\"><span class=\"glyphicon glyphicon-arrow-down\" aria-hidden=\"true\"></span></text>"
+                                . number_format($MARGIN_RATIO,2,'.','') . "%</td>";
+                            }
+                        else
+                            {
+                                echo "<td align=\"right\"><text class=\"text-success\"><span class=\"glyphicon glyphicon-arrow-up\" aria-hidden=\"true\"></span></text>"
+                                . number_format($MARGIN_RATIO,2,'.','') . "%</td>";
+                            }                        
                     
                     echo "</tr>";
                     $GRAND_TOTAL_EXPECTED_SALES+=$EXPECTED_SALES_VALUE;
@@ -118,6 +131,7 @@ function profitDateFilter($thisDate1,$thisDate2)
                     echo "<td align=\"right\">" . number_format($EXPECTED_SALES_VALUE,2,'.','') . "</td>";
                     echo "<td align=\"right\">" . number_format($ACTUAL_SALES_VALUE,2,'.','') . "</td>";
                     echo "<td align=\"right\">" . number_format($EXPECTED_PROFIT,2,'.','') . "</td>";
+                    //$ACTUAL_PROFIT = -1;
                     if ($ACTUAL_PROFIT<0)
                         {
                             echo "<td align=\"right\" bgcolor=\"#f4511e\">" . number_format($ACTUAL_PROFIT,2,'.','') . "</td>";
@@ -125,6 +139,19 @@ function profitDateFilter($thisDate1,$thisDate2)
                     else
                         {
                             echo "<td align=\"right\">" . number_format($ACTUAL_PROFIT,2,'.','') . "</td>";
+                        }
+                    
+                    $MARGIN_RATIO = (($ACTUAL_PROFIT / $ACTUAL_SALES_VALUE) * 100); // % OF MARGIN CALCULATION
+
+                    if ($MARGIN_RATIO<0)
+                        {
+                            echo "<td align=\"right\" bgcolor=\"#f4511e\"><text class=\"text-danger\"><span class=\"glyphicon glyphicon-arrow-down\" aria-hidden=\"true\"></span></text>" 
+                            . number_format($MARGIN_RATIO,2,'.','') . "%</td>";
+                        }
+                    else
+                        {
+                            echo "<td align=\"right\"><text class=\"text-success\"><span class=\"glyphicon glyphicon-arrow-up\" aria-hidden=\"true\"></span></text>" . number_format($MARGIN_RATIO,2,'.','') 
+                            . "%</td>";
                         }
                     
                     echo "</tr>";
@@ -174,11 +201,12 @@ function prepareOutputTableHeader()
                 echo '<thead>';
                 echo '<tr>';
                 echo '<th align=\"left\">DATE</th>';                
-                echo '<th align=\"right\">COST VALUE</th>';
-                echo '<th align=\"right\">EXPECTED <br /> SALES VALUE</th>';
-                echo '<th align=\"right\">ACTUAL <br /> SALES VALUE</th>';
-                echo '<th align=\"right\">EXPECTED <br /> PROFIT</th>';
-                echo '<th align=\"right\">ACTUAL PROFIT</th>';
+                echo '<th class="text-right">COST VALUE</th>';
+                echo '<th class="text-right">EXPECTED <br /> SALES VALUE</th>';
+                echo '<th class="text-right">ACTUAL <br /> SALES VALUE</th>';
+                echo '<th class="text-right">EXPECTED <br /> PROFIT</th>';
+                echo '<th class="text-right">ACTUAL PROFIT</th>';
+                echo '<th class="text-right">MARGIN RATIO</th>';
                 echo '</tr>';
                 echo '</thead>';
     }
@@ -189,11 +217,12 @@ function prepareOutputTableDateHeader()
                 echo '<thead>';
                 echo '<tr>';
                 echo '<th align=\"left\">DATE</th>';
-                echo '<th align=\"right\">COST VALUE</th>';
-                echo '<th align=\"right\">EXPECTED <br /> SALES VALUE</th>';
-                echo '<th align=\"right\">ACTUAL <br /> SALES VALUE</th>';
-                echo '<th align=\"right\">EXPECTED <br /> PROFIT</th>';
-                echo '<th align=\"right\">ACTUAL PROFIT</th>';
+                echo '<th class="text-right">COST VALUE</th>';
+                echo '<th class="text-right">EXPECTED <br /> SALES VALUE</th>';
+                echo '<th class="text-right">ACTUAL <br /> SALES VALUE</th>';
+                echo '<th class="text-right">EXPECTED <br /> PROFIT</th>';
+                echo '<th class="text-right">ACTUAL PROFIT</th>';
+                echo '<th class="text-right">MARGIN RATIO</th>';
                 echo '</tr>';
                 echo '</thead>';
     }
