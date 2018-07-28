@@ -6,8 +6,8 @@
         $qYearlyCustSales = "select sum(invamountab) cSales,invdateab sYear from view_yearly_sales_all_customers group by invdateab order by invdateab;";
         $qCurMonCashSales = "select * from view_current_month_cash_sales;";
         $qCurMonCustSales = "select * from view_current_month_cust_sales;";
-        $qYearlyTotalSales = "select * from view_yearly_total_sales";
-        $qYearlyTotalProfit = "select * from view_yearly_total_profit";
+        $qYearlyTotalSales = "select * from view_yearly_total_sales;";
+        $qYearlyTotalProfit = "select * from view_yearly_total_profit;";
         
         $outputInvAmount = array();
         $outputYears = array();

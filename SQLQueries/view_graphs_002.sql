@@ -140,7 +140,7 @@ CREATE
 VIEW view_yearly_total_sales
 AS
 SELECT
-  SUM((`ticketlines`.`PRICE` * `ticketlines`.`UNITS`)) AS `ACTUAL_SALES_VALUE`,
+  FORMAT(SUM((`ticketlines`.`PRICE` * `ticketlines`.`UNITS`)),2) AS `ACTUAL_SALES_VALUE`,
   YEAR(`receipts`.`DATENEW`) AS `oYear`
 FROM (((`ticketlines`
   JOIN `products`

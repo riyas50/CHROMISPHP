@@ -53,7 +53,8 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="./Report_ProductSalesProfit.php">Itemwise Profit</a></li>
-                    <li><a href="./Report_ProductSalesProfitMonthly.php">Monthly Profit</a></li>
+                    <li><a href="./Report_ProductSalesProfitMonthly.php">Monthly Profit - All</a></li>
+                    <li><a href="./Report_StationerySalesProfitMonthly.php">Monthly Profit - Stationery</a></li>
                     <li><a href="./Report_CustomerInvoices.php">Customer Invoices</a></li>
                     <li><a href="./Report_CustomerItems.php">Customer Items</a></li>
                     <li role="separator" class="divider"></li>

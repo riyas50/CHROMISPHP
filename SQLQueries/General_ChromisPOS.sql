@@ -161,5 +161,9 @@ select * from products where code='500';
   select * from view_monthly_sales_all group by date_format(invdate,'%Y-%M') ;
 
   select * from view_yearly_total_sales;
+
+  SELECT * FROM view_profit_till_date;
+
+  SELECT * FROM view_profit_monthly_stationery
 */
 
