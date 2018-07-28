@@ -55,6 +55,7 @@
                     <li><a href="./Report_ProductSalesProfit.php">Itemwise Profit</a></li>
                     <li><a href="./Report_ProductSalesProfitMonthly.php">Monthly Profit - All</a></li>
                     <li><a href="./Report_StationerySalesProfitMonthly.php">Monthly Profit - Stationery</a></li>
+                    <li><a href="./Report_InternetSalesProfitMonthly.php">Monthly Profit - Internet</a></li>
                     <li><a href="./Report_CustomerInvoices.php">Customer Invoices</a></li>
                     <li><a href="./Report_CustomerItems.php">Customer Items</a></li>
                     <li role="separator" class="divider"></li>
