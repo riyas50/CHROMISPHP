@@ -64,6 +64,12 @@
                 </ul>
             </li>
             <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Actions <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="./Mark_Payment_Customerinvoices.php">Customer Payment Tracker</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Analytics <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="./dashboard.php" target="_blank">Dashboard</a></li>

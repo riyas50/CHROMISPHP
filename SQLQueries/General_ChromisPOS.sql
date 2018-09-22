@@ -162,8 +162,10 @@ select * from products where code='500';
 
   select * from view_yearly_total_sales;
 
-  SELECT * FROM view_profit_till_date;
+  SELECT * FROM view_profit_till_date_monthly;
 
   SELECT * FROM view_profit_monthly_stationery
+
+  SELECT * FROM view_profit_monthly_internet;
 */
 
