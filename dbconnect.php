@@ -3,8 +3,8 @@ function dbConn() {
         $servername = "localhost";
         $username = "root";
         $password = "access";
-        //$dbname = "chromispos";
-        $dbname = "grandchromis";
+        //$dbname = "chromispos"; 
+        $dbname = "grandchromis"; //local - 5.6.26	MySQL Community Server (GPL)	x86	Win32
 
         // Create connection
         $conn = mysqli_connect($servername, $username, $password, $dbname);

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -76,7 +77,8 @@
     //include('dbconnect.php');
     include('Mark_Payment_CustomerInvoices_query.php');
 
-        session_start();
+        //session_start();
+        $_SESSION["thispaystsquery"] = "";
         if( strcasecmp($_SERVER['REQUEST_METHOD'],"POST") === 0) {
             $_SESSION['postdata'] = $_POST;
             header("Location: ".$_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']);
@@ -106,11 +108,13 @@
 if (isset($_POST['Reload']))
     {
         refreshRecords();
+        //echo $_SESSION['thispaystsquery'];
     }
 
 if (isset($_POST['Search']))
     {
         filterRecords($_POST['customer'],$_POST['invoice']);
+        //echo $_SESSION['thispaystsquery'];
     }
 
 ?>
@@ -138,7 +142,10 @@ if (isset($_POST['Search']))
                 var thisurl = $(this).attr('data-href');
                 //var thisTicketSpn = 'span[id=s' + $(this).attr('id').substring(1);
                 var thisTicket = 'div[id=div' + $(this).attr('id').substring(1);
-                
+                var thisdue = 'div[id=due' + $(this).attr('id').substring(1);
+                var thispaid = 'div[id=paid' + $(this).attr('id').substring(1);
+                var thisduetot = 'div[id=duetot'; //+ $(this).attr('id').substring(1);
+                var thispaidtot = 'div[id=paidtot'; //+ $(this).attr('id').substring(1);
                 //alert(thisTicket);
                 //alert('success!');
                 //alert(thisurl);
@@ -149,13 +156,28 @@ if (isset($_POST['Search']))
                     data: {},
                     success: function (response) {
 
-                        //alert(response);
+                        var res = $.parseJSON(response);
+
+                        //alert(res.due);
+                        //alert(res.duetot);
+                        //alert(res.paid);
+                        //alert(res.paidtot);
                         
-                        $(thisTicket).html(response);
+                        $(thisTicket).html(res.paystatus);
+                        $(thisdue).html(res.due);
+                        $(thispaid).html(res.paid);
+                        $(thisduetot).html(res.duetot);
+                        $(thispaidtot).html(res.paidtot);
                         
-                        
+                    },
+                    error: function(jqxhr, status, exception) {
+                        alert('Exception:', exception); 
                     }
                 });
+
+/*                 $.ajax({
+                    
+                }); */
 
             });
         });
