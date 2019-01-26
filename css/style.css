@@ -10,7 +10,8 @@
 }
 
 body {
-    font: 14px/1.4 Georgia, serif;
+    /* font: 14px/1.4 Georgia, serif; */
+    font: 14px/1.4 Helvetica, serif;
 }
 
 #page-wrap {
@@ -20,7 +21,8 @@ body {
 
 textarea {
     border: 0;
-    font: 14px Georgia, Serif;
+    /* font: 14px Georgia, Serif; */
+    font: 14px Helvetica, Serif;
     overflow: hidden;
     resize: none;
 }
@@ -87,16 +89,8 @@ table th {
 } */
 
 .entheading {
-    /*     font-family: "Stencil Std", fantasy;
-    font-size: 50px; */
-    font-family: 'Open Sans', sans-serif;
-    /* font-family: 'Allerta Stencil', fantasy; */
-    /* font-family: 'Open Sans', sans-serif; */
-    font-size: 40px;
-    /* font-style: normal;
-    font-variant: normal; */
+    font-size: 30px;
     font-weight: bold;
-    /* font-weight: 700; */
     line-height: 33px;
 }
 

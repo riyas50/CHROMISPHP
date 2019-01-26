@@ -83,8 +83,8 @@ function getIndianCurrency($number)
 	<link rel='stylesheet' type='text/css' href="./css/style.css" />
     <link rel='stylesheet' type='text/css' href="./css/print.css" media="print" />
     <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet"> -->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Allerta+Stencil" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
+<!--     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Allerta+Stencil" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet"> -->
     <script src="./js/jquery.min.js"></script>
     <!-- <script src="./js/example.js"></script> -->
 
@@ -94,14 +94,14 @@ function getIndianCurrency($number)
 
 	<div id="page-wrap">
 
-		<h2 class="text-capitalize text-center entheading">GRAND STATIONERY</h2>
-		<h4 class="text-center">
+		<h3 class="text-capitalize text-center entheading">GRAND STATIONERY</h3>
+		<h6 class="text-center">
             <em>learn smart... work smart...</em>
-        </h4>
+        </h6>
         <h4 class="text-center">Retail & Wholesale</h4>
         <h5 class="text-center"><span class="glyphicon glyphicon-map-marker text-warning"></span> Chendamangalam Junction | North Paravur | <span class="glyphicon glyphicon-phone-alt text-warning"></span> 8592 84 00 46 | <span class="glyphicon glyphicon-envelope text-warning"></span> sales@grandstationery.in</h5>
         <hr>
-        <h1 class="text-capitalize text-center">INVOICE</h1>
+        <h3 class="text-capitalize text-center">INVOICE</h3>
         
 
 <!-- 		<div id="identity">
@@ -169,8 +169,9 @@ Kerala 683513</textarea>
 		      <td class="total-value amtrgt"><div id="subtotal">₹ <?php //echo number_format($_GET['tot'],2,'.',''); ?></div></td>
 		  </tr> -->
 		  <tr>
-              <!-- <td class="blank"></td> -->
-		      <td colspan="3" class="text-capitalize amt2word"><?php echo getIndianCurrency((float)$_GET['tot']); ?></td>
+              <td class="blank"></td>
+		      <td colspan="2" class="blank"></td>
+		      <!-- <td colspan="3" class="text-capitalize amt2word"><?php //echo getIndianCurrency((float)$_GET['tot']); ?></td> -->
 		      <td colspan="2" class="total-line">Total</td>
 		      <td class="total-value amtrgt"><div id="total">₹ <?php echo number_format($_GET['tot'],2,'.',''); ?></div></td>
 		  </tr>
@@ -188,7 +189,22 @@ Kerala 683513</textarea>
 		  </tr> -->
 		
 		</table>
-		
+		<br>
+        <div class="row">
+            
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <br>
+                <p class="text text-left">Customer Signature</p>                
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <br>
+                <p class="text text-right">For Grand Stationery</p>
+            </div>
+            <hr>
+        </div>
 <!-- 		<div id="terms">
 		  <h5></h5>
 		  phone: 24425128 <br>
