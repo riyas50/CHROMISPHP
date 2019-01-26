@@ -1,12 +1,41 @@
 <?php
 
 include('dbconnect.php');
+//include('invoicedetails.php');
 
 //printA4();
 
 function printA4()
 {
-    if (!empty($_GET['ticketid'])) {
+    if(!empty($_GET['ticketid'])){
+        $conn = dbConn();
+    
+        $query = "select * from view_all_ticketlines_v2 where ticketid = {$_GET['ticketid']}";
+        
+        
+        if ($stmt = $conn->prepare($query)) {
+            $stmt->execute();
+            $stmt->bind_result($TICKETID, $PCODE, $PRODUCT,$LINEITEM,$QTY,$UNITPRICE,$TOTAL);
+    
+            while ($stmt->fetch()) {
+                $unit = number_format($UNITPRICE,2,'.','');
+                $linetot = number_format($TOTAL,2,'.','');
+                echo "
+                <tr class=\"item-row\">
+                <td class=\"qtycnt\">$LINEITEM</td>
+                <td class=\"item-name\">$PCODE</div></td>
+                <td class=\"description\">$PRODUCT</td>
+                <td class=\"amtcnt\">₹ $unit</td>
+                <td class=\"qtycnt\">$QTY</td>
+                <td class=\"amtrgt\"><span class=\"price\">₹ $linetot</span></td>
+            </tr>";
+            }
+            $stmt->close();
+        }
+    }
+
+
+/*     if (!empty($_GET['ticketid'])) {
         $conn = dbConn();
 
         $query = "select * from view_all_ticketlines where ticketid = {$_GET['ticketid']}";
@@ -52,7 +81,7 @@ function printA4()
             echo "<td align=\"right\" bgcolor=\"#32cb00\"><font color=\"white\"><b>". number_format($GRAND_TOTAL, 2, '.', '') ."</b></font></td>";
             echo "</tbody></table>";
         }
-    }
+    } */
 }
 
 ?>
@@ -67,6 +96,8 @@ function printA4()
     <link rel="stylesheet" href="./css/bootstrap.min.css">
 	<link rel='stylesheet' type='text/css' href="./css/style.css" />
     <link rel='stylesheet' type='text/css' href="./css/print.css" media="print" />
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Allerta+Stencil" />
     <script src="./js/jquery.min.js"></script>
     <!-- <script src="./js/example.js"></script> -->
 
@@ -76,9 +107,17 @@ function printA4()
 
 	<div id="page-wrap">
 
-		<textarea id="header">INVOICE</textarea>
-		
-		<div id="identity">
+		<h2 class="text-capitalize text-center entheading">GRAND STATIONERY</h2>
+		<h4 class="text-center">
+            <em>learn smart... work smart...</em>
+        </h4>
+        <h4 class="text-center">Retail & Wholesale</h4>
+        <h5 class="text-center"><span class="glyphicon glyphicon-map-marker text-warning"></span> Chendamangalam Junction | North Paravur | <span class="glyphicon glyphicon-phone-alt text-warning"></span> 8592 84 00 46 | <span class="glyphicon glyphicon-envelope text-warning"></span> sales@grandstationery.in</h5>
+        <hr>
+        <h1 class="text-capitalize text-center">INVOICE</h1>
+        
+
+<!-- 		<div id="identity">
 		
             <textarea id="address">
 Thozhilali Multipurpose 
@@ -92,7 +131,7 @@ Kerala 683513</textarea>
               <img id="grandlogo" src="./images/grandlogohalf.png" alt="logo" />
             </div>
 		
-		</div>
+		</div> -->
 		
 		<div style="clear:both"></div>
 		
@@ -111,9 +150,13 @@ Kerala 683513</textarea>
                     <td><textarea id="date"><?php echo $_GET['invdt'];?></textarea></td>
                 </tr>
                 <tr>
-                    <td class="meta-head">Amount Due</td>
-                    <td><div class="due">₹ <?php echo number_format($_GET['tot'],2,'.',''); ?></div></td>
+                    <td class="meta-head">LPO#</td>
+                    <td><textarea>NA</textarea></td>
                 </tr>
+<!--                 <tr>
+                    <td class="meta-head">LPO#</td>
+                    <td><div class="due">₹ <?php echo number_format($_GET['tot'],2,'.',''); ?></div></td>
+                </tr> -->
 
             </table>
 		
@@ -130,22 +173,24 @@ Kerala 683513</textarea>
 		      <th>Price</th>
 		  </tr>
 		  
-		  <tr class="item-row">
+<!-- 		  <tr class="item-row">
               <td class="qtycnt">1</td>
 		      <td class="item-name">Web Updates</div></td>
 		      <td class="description">Monthly web updates for http://widgetcorp.com (Nov. 1 - Nov. 30, 2009)</td>
 		      <td class="amtcnt">₹ 650.00</td>
 		      <td class="qtycnt">1</td>
 		      <td class="amtrgt"><span class="price">₹ 650.00</span></td>
-		  </tr>
+          </tr> -->
+          
+          <?php printA4(); ?>
 		  		  
 		  
-		  <tr>
+<!-- 		  <tr>
               <td class="blank"></td>
 		      <td colspan="2" class="blank"> </td>
 		      <td colspan="2" class="total-line">Subtotal</td>
 		      <td class="total-value amtrgt"><div id="subtotal">₹ <?php echo number_format($_GET['tot'],2,'.',''); ?></div></td>
-		  </tr>
+		  </tr> -->
 		  <tr>
               <td class="blank"></td>
 		      <td colspan="2" class="blank"> </td>
@@ -158,21 +203,21 @@ Kerala 683513</textarea>
 
 		      <td class="total-value"><textarea id="paid">₹ 0.00</textarea></td>
 		  </tr> -->
-		  <tr>
+<!-- 		  <tr>
               <td class="blank"></td>
 		      <td colspan="2" class="blank"> </td>
 		      <td colspan="2" class="total-line balance">Balance Due</td>
 		      <td class="total-value balance amtrgt"><div class="due">₹ <?php echo number_format($_GET['tot'],2,'.',''); ?></div></td>
-		  </tr>
+		  </tr> -->
 		
 		</table>
 		
-		<div id="terms">
+<!-- 		<div id="terms">
 		  <h5></h5>
 		  phone: 24425128 <br>
 		  Thozhilali Multipurpose co operative building | Paliyam Road | Chendamangalam Junction | North Paravur | Kerala | 683513
           <h5></h5>
-        </div>
+        </div> -->
 	
 	</div>
 	
