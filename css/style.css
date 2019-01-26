@@ -89,13 +89,21 @@ table th {
 .entheading {
     /*     font-family: "Stencil Std", fantasy;
     font-size: 50px; */
-    font-family: "Allerta Stencil", fantasy;
+    font-family: 'Open Sans', sans-serif;
+    /* font-family: 'Allerta Stencil', fantasy; */
     /* font-family: 'Open Sans', sans-serif; */
     font-size: 40px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: 700;
+    /* font-style: normal;
+    font-variant: normal; */
+    font-weight: bold;
+    /* font-weight: 700; */
     line-height: 33px;
+}
+
+.amt2word {
+    text-decoration-color: rgb(5, 45, 133);
+    font-size: 15px;
+    text-align: left;
 }
 
 #logohelp {

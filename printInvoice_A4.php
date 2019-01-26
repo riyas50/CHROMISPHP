@@ -34,54 +34,40 @@ function printA4()
         }
     }
 
+}
 
-/*     if (!empty($_GET['ticketid'])) {
-        $conn = dbConn();
-
-        $query = "select * from view_all_ticketlines where ticketid = {$_GET['ticketid']}";
-    
-    
-        if ($stmt = $conn->prepare($query)) {
-            $stmt->execute();
-            $stmt->bind_result($TICKETID, $PRODUCT, $LINEITEM, $QTY, $UNITPRICE, $TOTAL);
-        
-            echo "
-        <table class=\"table table-hover\">
-            <thead>
-                <tr>
-                    <th class=\"text-center\">ITEM#</th>
-                    <th>PRODUCT</th>
-                    <th class=\"text-center\">QTY</th>
-                    <th class=\"text-center\">UNIT PRICE</th>
-                    <th class=\"text-right\">TOTAL</th>
-                </tr>
-            </thead>
-            <tbody>";
-
-            // echo "ITM#\tPRODUCT\tQTY\tUNITPRICE\tTOTAL\t";
-            echo "<br>";
-            $GRAND_TOTAL = 0;
-            while ($stmt->fetch()) {
-                echo "
-            <tr>
-                <td class=\"text-center\">$LINEITEM</td>
-                <td>$PRODUCT</td>
-                <td class=\"text-center\">$QTY</td>
-                <td class=\"text-center\">" . number_format($UNITPRICE, 2, '.', '') . "</td>
-                <td class=\"text-right\">" . number_format($TOTAL, 2, '.', '') . "</td>
-            </tr>";
-                $GRAND_TOTAL+=$TOTAL;
-            }
-            $stmt->close();
-
-            echo "<td></td>";
-            echo "<td></td>";
-            echo "<td></td>";
-            echo "<td></td>";
-            echo "<td align=\"right\" bgcolor=\"#32cb00\"><font color=\"white\"><b>". number_format($GRAND_TOTAL, 2, '.', '') ."</b></font></td>";
-            echo "</tbody></table>";
-        }
-    } */
+function getIndianCurrency($number)
+{
+    $decimal = round($number - ($no = floor($number)), 2) * 100;
+    $hundred = null;
+    $digits_length = strlen($no);
+    $i = 0;
+    $str = array();
+    $words = array(0 => 'zero', 1 => 'one', 2 => 'two',
+        3 => 'three', 4 => 'four', 5 => 'five', 6 => 'six',
+        7 => 'seven', 8 => 'eight', 9 => 'nine',
+        10 => 'ten', 11 => 'eleven', 12 => 'twelve',
+        13 => 'thirteen', 14 => 'fourteen', 15 => 'fifteen',
+        16 => 'sixteen', 17 => 'seventeen', 18 => 'eighteen',
+        19 => 'nineteen', 20 => 'twenty', 30 => 'thirty',
+        40 => 'forty', 50 => 'fifty', 60 => 'sixty',
+        70 => 'seventy', 80 => 'eighty', 90 => 'ninety');
+    $digits = array('', 'hundred','thousand','lakh', 'crore');
+    while( $i < $digits_length ) {
+        $divider = ($i == 2) ? 10 : 100;
+        $number = floor($no % $divider);
+        $no = floor($no / $divider);
+        $i += $divider == 10 ? 1 : 2;
+        if ($number) {
+            $plural = (($counter = count($str)) && $number > 9) ? 's' : null;
+            $hundred = ($counter == 1 && $str[0]) ? ' and ' : null;
+            $str [] = ($number < 21) ? $words[$number].' '. $digits[$counter]. $plural.' '.$hundred:$words[floor($number / 10) * 10].' '.$words[$number % 10]. ' '.$digits[$counter].$plural.' '.$hundred;
+        } else $str[] = null;
+    }
+    $Rupees = implode('', array_reverse($str));
+    //$paise = ($decimal) ? "." . ($words[$decimal / 10] . " " . $words[$decimal % 10]) . ' Paise' : '';
+    $paise = $words[$decimal] . ' Paise';
+    return ($Rupees ? $Rupees . 'Rupees ' : '') . $paise . " Only";
 }
 
 ?>
@@ -98,6 +84,7 @@ function printA4()
     <link rel='stylesheet' type='text/css' href="./css/print.css" media="print" />
     <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet"> -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Allerta+Stencil" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
     <script src="./js/jquery.min.js"></script>
     <!-- <script src="./js/example.js"></script> -->
 
@@ -173,27 +160,17 @@ Kerala 683513</textarea>
 		      <th>Price</th>
 		  </tr>
 		  
-<!-- 		  <tr class="item-row">
-              <td class="qtycnt">1</td>
-		      <td class="item-name">Web Updates</div></td>
-		      <td class="description">Monthly web updates for http://widgetcorp.com (Nov. 1 - Nov. 30, 2009)</td>
-		      <td class="amtcnt">₹ 650.00</td>
-		      <td class="qtycnt">1</td>
-		      <td class="amtrgt"><span class="price">₹ 650.00</span></td>
-          </tr> -->
-          
           <?php printA4(); ?>
-		  		  
-		  
+	
 <!-- 		  <tr>
               <td class="blank"></td>
 		      <td colspan="2" class="blank"> </td>
 		      <td colspan="2" class="total-line">Subtotal</td>
-		      <td class="total-value amtrgt"><div id="subtotal">₹ <?php echo number_format($_GET['tot'],2,'.',''); ?></div></td>
+		      <td class="total-value amtrgt"><div id="subtotal">₹ <?php //echo number_format($_GET['tot'],2,'.',''); ?></div></td>
 		  </tr> -->
 		  <tr>
-              <td class="blank"></td>
-		      <td colspan="2" class="blank"> </td>
+              <!-- <td class="blank"></td> -->
+		      <td colspan="3" class="text-capitalize amt2word"><?php echo getIndianCurrency((float)$_GET['tot']); ?></td>
 		      <td colspan="2" class="total-line">Total</td>
 		      <td class="total-value amtrgt"><div id="total">₹ <?php echo number_format($_GET['tot'],2,'.',''); ?></div></td>
 		  </tr>
@@ -207,7 +184,7 @@ Kerala 683513</textarea>
               <td class="blank"></td>
 		      <td colspan="2" class="blank"> </td>
 		      <td colspan="2" class="total-line balance">Balance Due</td>
-		      <td class="total-value balance amtrgt"><div class="due">₹ <?php echo number_format($_GET['tot'],2,'.',''); ?></div></td>
+		      <td class="total-value balance amtrgt"><div class="due">₹ <?php //echo number_format($_GET['tot'],2,'.',''); ?></div></td>
 		  </tr> -->
 		
 		</table>
