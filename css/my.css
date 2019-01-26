@@ -1,3 +1,13 @@
 a[id^="a"] {
     text-decoration: none !important;
 }
+
+#grandlogo {
+    float: right;
+}
+
+#invoiceTable td {
+    /* text-decoration: none; */
+    border: none;
+    width: 70%;
+}

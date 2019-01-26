@@ -1,12 +1,10 @@
 {
-    "folders": [{
-            "path": "."
-        },
-        {
-            //"path": "C:\\xampp\\htdocs\\ajaxtest"
-        }
-    ],
-    "settings": {
-        "workbench.editor.enablePreview": false
-    }
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"workbench.editor.enablePreview": false
+	}
 }
