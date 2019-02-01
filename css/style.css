@@ -19,6 +19,11 @@ body {
     margin: 0 auto;
 }
 
+#tagline {
+    font-size: 20px;
+    /* color: gray; */
+}
+
 #BankDetails {
     border: dashed 1px gray;
     font: 14px Helvetica, Serif;

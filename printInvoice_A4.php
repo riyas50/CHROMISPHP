@@ -96,7 +96,7 @@ function getIndianCurrency($number)
 
 		<h3 class="text-capitalize text-center entheading">GRAND STATIONERY</h3>
 		<h6 class="text-center">
-            <em>learn smart... work smart...</em>
+            <em id="tagline" name="tagline">learn smart... work smart...</em>
         </h6>
         <h4 class="text-center">Retail & Wholesale</h4>
         <h5 class="text-center"><span class="glyphicon glyphicon-map-marker text-warning"></span> Chendamangalam Junction | North Paravur | <span class="glyphicon glyphicon-phone-alt text-warning"></span> 8592 84 00 46 | <span class="glyphicon glyphicon-envelope text-warning"></span> sales@grandstationery.in</h5>
@@ -213,7 +213,7 @@ Kerala 683513</textarea>
             
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left">
      
-<textarea name="BankDetails" id="BankDetails" cols="25" rows="4" class="BankDetails">
+<textarea name="BankDetails" id="BankDetails" cols="25" rows="5">
 Bank Details:
 South Indian Bank
 A/C# 0058073000001002
@@ -232,7 +232,8 @@ SWIFT: SOININ55XXX
         
 	
 	</div>
-	
+<br>
+<br>	
 </body>
 
 </html>
