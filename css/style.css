@@ -25,7 +25,8 @@ body {
 }
 
 #BankDetails {
-    border: dashed 1px gray;
+    /* border: dashed 1px gray; */
+    border: none;
     font: 14px Helvetica, Serif;
     font-style: italic;
     background: lightgray;
