@@ -205,12 +205,31 @@ Kerala 683513</textarea>
             </div>
             <hr>
         </div>
-<!-- 		<div id="terms">
-		  <h5></h5>
-		  phone: 24425128 <br>
-		  Thozhilali Multipurpose co operative building | Paliyam Road | Chendamangalam Junction | North Paravur | Kerala | 683513
-          <h5></h5>
-        </div> -->
+
+        <br>
+        <br>
+        
+        <div class="row">
+            
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-left">
+     
+<textarea name="BankDetails" id="BankDetails" cols="25" rows="4" class="BankDetails">
+Bank Details:
+South Indian Bank
+A/C# 0058073000001002
+IFSC: SIBL0000058
+SWIFT: SOININ55XXX
+</textarea>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                
+            </div>
+            
+        </div>
+        
 	
 	</div>
 	

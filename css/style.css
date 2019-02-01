@@ -19,6 +19,16 @@ body {
     margin: 0 auto;
 }
 
+#BankDetails {
+    border: dashed 1px gray;
+    font: 14px Helvetica, Serif;
+    font-style: italic;
+    background: lightgray;
+    overflow: hidden;
+    resize: none;
+    float: left;
+}
+
 textarea {
     border: 0;
     /* font: 14px Georgia, Serif; */
