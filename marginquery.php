@@ -263,7 +263,7 @@
         } 
         //function refreshrecords()
 
-    function filterRecords($barcode,$item,$category) 
+    function filterRecords($barcode,$item,$category,$mrp) 
         {
             echo '<div class="panel panel-default">';  
             echo '<table class="table table-striped">';
@@ -330,6 +330,10 @@
                  WHERE products.code like '%" . $barcode . "%'" .   
                  "AND products.NAME like '%" . $item . "%'" .   
                  "AND categories.NAME like '%" . $category . "%'";
+                 if ($mrp > 0) {
+                    $query = $query ."AND products.PRICESELL = " . $mrp;
+                 }
+                 
 
 
                 if ($stmt = $conn->prepare($query)) {

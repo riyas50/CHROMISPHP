@@ -64,6 +64,7 @@
     <input type="text" class="form-control" name="barcode" id="inlineFormInputGroup" placeholder="BARCODE">
     <input type="text" class="form-control" name="item" id="inlineFormInputGroup" placeholder="ITEM">
     <input type="text" class="form-control" name="category" id="inlineFormInputGroup" placeholder="CATEGORY">
+    <input type="text" class="form-control" name="mrp" id="inlineFormInputGroup" placeholder="MRP">
     </div>
     <br />  
      <button type="submit" class="btn btn-success" id="btnSearch" name="Search">Search</button>
@@ -128,7 +129,7 @@
 
     if (isset($_POST['Search']))
         {
-            filterRecords($_POST['barcode'],$_POST['item'],$_POST['category']);
+            filterRecords($_POST['barcode'],$_POST['item'],$_POST['category'],$_POST['mrp']);
             //$_POST['barcode'] = $_POST['barcode'];
         }
 
