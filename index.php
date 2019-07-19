@@ -58,6 +58,7 @@
                     <li><a href="./Report_InternetSalesProfitMonthly.php">Monthly Profit - Internet</a></li>
                     <li><a href="./Report_CustomerInvoices.php">Customer Invoices</a></li>
                     <li><a href="./Report_CustomerItems.php">Customer Items</a></li>
+                    <li><a href="./Report_CustomerItems_price.php">Customer Items Last/Max Billed</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="./Report_CashReceipts.php">Cash Receipts Search</a></li>
                     <li><a href="./Report_CashReceiptsItems.php">Cash Receipts Product Search</a></li>
