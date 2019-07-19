@@ -51,8 +51,9 @@
           <a class="glyphicon glyphicon-home" style="font-size:30px;color:orange" href="/chromisphp/"></a> 
  <div class="input-group">
     <div class="input-group-addon">SEARCH</div>
-    <input type="text" class="form-control" name="customer" id="inlineFormInputGroup" placeholder="Customer...">
-    <input type="text" class="form-control" name="invoice" id="inlineFormInputGroup" placeholder="Invoice#">
+    <input type="text" class="form-control" name="customer" id="customer" placeholder="Customer...">
+    <div id="display" class="list-group"></div>
+    <input type="text" class="form-control" name="invoice" id="invoice" placeholder="Invoice#">
     </div>
     <br />  
      <button type="submit" class="btn btn-success" id="btnSearch" name="Search">Search</button>
@@ -118,7 +119,8 @@ if (isset($_POST['Search']))
     //include('general.php');
     putScripts();
 ?>
-    <script>
+<script type="text/javascript" src="js/customer_invoices_ajax.js"></script>
+    <!-- <script>
         $(document).ready(function(){
             $('.openTicket').on('click',function(){
                 var dataURL = $(this).attr('data-href');
@@ -128,7 +130,8 @@ if (isset($_POST['Search']))
                 });
             }); 
         });
-    </script>
+    </script> -->
+
 <?php
     stickfooter();
 ?>
