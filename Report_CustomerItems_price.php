@@ -3,6 +3,7 @@
   <head>
     
     <?php
+        set_time_limit(300); //300 seconds, 5 minutes
         include('general.php');
         putLinks();
     ?>

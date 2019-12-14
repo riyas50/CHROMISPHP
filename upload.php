@@ -1,4 +1,5 @@
 <?php
+set_time_limit(300); //300 seconds, 5 minutes
 $target_dir = "/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;

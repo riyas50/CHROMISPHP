@@ -1,5 +1,5 @@
 <?php
-    
+    set_time_limit(300); //300 seconds, 5 minutes
     include('dbconnect.php');
     function refreshRecords() {
 
