@@ -1,0 +1,74 @@
+[
+  {
+    "TicketNo": "25012020191158",
+    "TicketDate": "25 January 2020  07:11:58 PM",
+    "TicketLineItem": [
+      {
+        "ItemIndex": 1,
+        "Qty": 1,
+        "Rate": 2.0,
+        "TotalItemPrice": 2.0
+      },
+      {
+        "ItemIndex": 2,
+        "Qty": 2,
+        "Rate": 1.0,
+        "TotalItemPrice": 2.0
+      },
+      {
+        "ItemIndex": 3,
+        "Qty": 12,
+        "Rate": 3.0,
+        "TotalItemPrice": 36.0
+      },
+      {
+        "ItemIndex": 4,
+        "Qty": 3,
+        "Rate": 2.0,
+        "TotalItemPrice": 6.0
+      },
+      {
+        "ItemIndex": 5,
+        "Qty": 1,
+        "Rate": 2.0,
+        "TotalItemPrice": 2.0
+      },
+      {
+        "ItemIndex": 6,
+        "Qty": 33,
+        "Rate": 2.0,
+        "TotalItemPrice": 66.0
+      },
+      {
+        "ItemIndex": 7,
+        "Qty": 2,
+        "Rate": 2.0,
+        "TotalItemPrice": 4.0
+      },
+      {
+        "ItemIndex": 8,
+        "Qty": 3,
+        "Rate": 3.0,
+        "TotalItemPrice": 9.0
+      },
+      {
+        "ItemIndex": 9,
+        "Qty": 2,
+        "Rate": 2.0,
+        "TotalItemPrice": 4.0
+      },
+      {
+        "ItemIndex": 10,
+        "Qty": 23,
+        "Rate": 3.0,
+        "TotalItemPrice": 69.0
+      },
+      {
+        "ItemIndex": 11,
+        "Qty": 3,
+        "Rate": 3.0,
+        "TotalItemPrice": 9.0
+      }
+    ]
+  }
+]
