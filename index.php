@@ -62,6 +62,8 @@
                     <li role="separator" class="divider"></li>
                     <li><a href="./Report_CashReceipts.php">Cash Receipts Search</a></li>
                     <li><a href="./Report_CashReceiptsItems.php">Cash Receipts Product Search</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="./StoreSalesSummary.php">Store Sales Summary</a></li>
                 </ul>
             </li>
             <li class="dropdown">

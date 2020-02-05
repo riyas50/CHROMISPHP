@@ -1,12 +1,20 @@
 <?php
-  $dir = "C:\ProgramData\SimpleReceipt";
+function GetStoreSalesSummary() 
+{
+  $dir = "C:/ProgramData/SimpleReceipt/";
+
   if (is_dir($dir)) {
-    if ($dh = opendir($dir)) {
-      //foreach(glob("*.json") as $filename) {
-        // $data = file_get_contents($filename);
+    
+      $filenames = glob($dir . "*.json");
+      foreach($filenames as $filename) {
+        $data = file_get_contents($filename);
+      }
+
         $data = file_get_contents("C:/ProgramData/SimpleReceipt/tickets_data_04022020.json");
         $tickets = json_decode($data, true);
-        var_dump($tickets);
+
+        return $tickets;
+        
         echo("<br>");
         echo("<br>");
         echo("<br>");
@@ -24,14 +32,7 @@
             echo "--------------------------------------------------------------------";
             echo "<br>";
           }
-          // foreach($tickets['TicketLineItem'][0] as $transaction) {
-          //   echo $transaction['ItemIndex'] . "<br/>";
-          //   echo $transaction['Qty'] . "<br/>";
-          //   echo $transaction['Rate'] . "<br/>";
-          //   echo $transaction['TotalItemPrice'] . "<br/>";
-          // }
         }
-      //}
     }
   }
 ?>
