@@ -190,8 +190,14 @@ Kerala 683513</textarea>
 		
 		</table>
 		<br>
+<textarea id="termsandconditions">
+Terms & Conditions:
+------------------------------
+
+</textarea>
+        <br>
         <div class="row">
-            
+
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
             <br>
                 <p class="text text-left">Customer Signature</p>                
